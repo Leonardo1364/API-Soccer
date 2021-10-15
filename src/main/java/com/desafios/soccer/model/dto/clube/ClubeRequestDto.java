@@ -11,5 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ClubeRequestDto {
 
+    private String id;
     private String nome;
 }

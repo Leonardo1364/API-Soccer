@@ -5,6 +5,7 @@ import com.desafios.soccer.model.Clube;
 import com.desafios.soccer.model.dto.clube.ClubeRequestDto;
 import com.desafios.soccer.model.dto.clube.ClubeResponseDto;
 import com.desafios.soccer.repository.ClubeRepository;
+import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,19 +24,19 @@ public class ClubeService {
         return ClubeMapper.INSTANCE.toClubeDto(clubeSave);
     }
 
-    public ClubeResponseDto updateTeamById(ClubeRequestDto clube, String nome) {
-        Clube clubeNome = clubeRepository.findById(nome)
-                .orElseThrow(() -> new NullPointerException("Name not found"));
+    public ClubeResponseDto updateTeamById(ClubeRequestDto clube, String id) {
+        Clube clubeNome = clubeRepository.findById(id)
+                .orElseThrow(() -> new com.desafios.soccer.exceptions.notfound.NotFoundException("ID not found"));
         clube.setNome(clubeNome.getName());
         Clube clubeEntity = ClubeMapper.INSTANCE.toClubeEntity(clube);
         Clube clubeSave = clubeRepository.save(clubeEntity);
         return ClubeMapper.INSTANCE.toClubeDto(clubeSave);
     }
 
-    public void deleteTeamById(String nome) {
-        clubeRepository.findById(nome)
-                .orElseThrow(() -> new NullPointerException("Name not found"));
-        clubeRepository.deleteById(nome);
+    public void deleteTeamById(String id) {
+        clubeRepository.findById(id)
+                .orElseThrow(() -> new com.desafios.soccer.exceptions.notfound.NotFoundException("ID not found"));
+        clubeRepository.deleteById(id);
     }
 
     public List<ClubeResponseDto> findAllClubes() {
@@ -44,9 +45,9 @@ public class ClubeService {
                 .collect(Collectors.toList());
     }
 
-    public ClubeResponseDto findTeamById(String nome) {
-        Clube clube = clubeRepository.findById(nome)
-                .orElseThrow(() -> new NullPointerException("Name not found"));
+    public ClubeResponseDto findTeamById(String id) {
+        Clube clube = clubeRepository.findById(id)
+                .orElseThrow(() -> new com.desafios.soccer.exceptions.notfound.NotFoundException("ID not found"));
         return ClubeMapper.INSTANCE.toClubeDto(clube);
     }
 }
