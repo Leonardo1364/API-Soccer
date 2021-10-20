@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class ClubeResponseDto {
 
     private String id;
-//    private String icon;
+    private String icon;
     private String nome;
 //    private List<JogadorResponseDto> jogador;
 }
