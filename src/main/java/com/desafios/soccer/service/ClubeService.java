@@ -5,7 +5,6 @@ import com.desafios.soccer.model.Clube;
 import com.desafios.soccer.model.dto.clube.ClubeRequestDto;
 import com.desafios.soccer.model.dto.clube.ClubeResponseDto;
 import com.desafios.soccer.repository.ClubeRepository;
-import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +17,13 @@ public class ClubeService {
 
     private final ClubeRepository clubeRepository;
 
-    public ClubeResponseDto saveTeam(ClubeRequestDto clube) {
+    public ClubeResponseDto saveClube(ClubeRequestDto clube) {
         Clube clubeEntity = ClubeMapper.INSTANCE.toClubeEntity(clube);
         Clube clubeSave = clubeRepository.save(clubeEntity);
         return ClubeMapper.INSTANCE.toClubeDto(clubeSave);
     }
 
-    public ClubeResponseDto updateTeamById(ClubeRequestDto clube, String id) {
+    public ClubeResponseDto updateClubeById(ClubeRequestDto clube, Long id) {
         Clube clubeNome = clubeRepository.findById(id)
                 .orElseThrow(() -> new com.desafios.soccer.exceptions.notfound.NotFoundException("ID not found"));
         clube.setNome(clubeNome.getName());
@@ -33,7 +32,7 @@ public class ClubeService {
         return ClubeMapper.INSTANCE.toClubeDto(clubeSave);
     }
 
-    public void deleteTeamById(String id) {
+    public void deleteClubeById(Long id) {
         clubeRepository.findById(id)
                 .orElseThrow(() -> new com.desafios.soccer.exceptions.notfound.NotFoundException("ID not found"));
         clubeRepository.deleteById(id);
@@ -45,7 +44,7 @@ public class ClubeService {
                 .collect(Collectors.toList());
     }
 
-    public ClubeResponseDto findTeamById(String id) {
+    public ClubeResponseDto findClubeById(Long id) {
         Clube clube = clubeRepository.findById(id)
                 .orElseThrow(() -> new com.desafios.soccer.exceptions.notfound.NotFoundException("ID not found"));
         return ClubeMapper.INSTANCE.toClubeDto(clube);
