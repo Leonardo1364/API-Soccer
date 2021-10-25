@@ -36,7 +36,7 @@ public class ClubeController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ClubeResponseDto findClubeById(Long id) {
+    public ClubeResponseDto findClubeById(@PathVariable Long id) {
         return clubeFacade.findClubeById(id);
     }
 
