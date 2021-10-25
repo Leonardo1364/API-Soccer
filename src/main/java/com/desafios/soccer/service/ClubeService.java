@@ -6,13 +6,15 @@ import com.desafios.soccer.model.dto.clube.ClubeRequestDto;
 import com.desafios.soccer.model.dto.clube.ClubeResponseDto;
 import com.desafios.soccer.repository.ClubeRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
-@Service
+@Configuration
 public class ClubeService {
 
     private final ClubeRepository clubeRepository;

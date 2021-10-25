@@ -4,9 +4,11 @@ import com.desafios.soccer.model.dto.clube.ClubeRequestDto;
 import com.desafios.soccer.model.dto.clube.ClubeResponseDto;
 import com.desafios.soccer.service.ClubeService;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 @AllArgsConstructor
 public class ClubeFacadeImpl implements ClubeFacade{
 
