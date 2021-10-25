@@ -1,11 +1,9 @@
-package com.desafios.soccer.service.facade;
+package com.desafios.soccer.service.clube;
 
 import com.desafios.soccer.model.dto.clube.ClubeRequestDto;
 import com.desafios.soccer.model.dto.clube.ClubeResponseDto;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
-
 
 public interface ClubeFacade {
 
@@ -18,4 +16,5 @@ public interface ClubeFacade {
     ClubeResponseDto findClubeById(Long id);
 
     List<ClubeResponseDto> findAllClubes();
+
 }

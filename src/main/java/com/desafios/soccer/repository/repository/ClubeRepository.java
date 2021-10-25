@@ -1,6 +1,6 @@
-package com.desafios.soccer.repository;
+package com.desafios.soccer.repository.repository;
 
-import com.desafios.soccer.model.Clube;
+import com.desafios.soccer.repository.model.entity.Clube;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
