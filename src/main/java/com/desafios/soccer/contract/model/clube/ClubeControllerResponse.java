@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class ClubeControllerResponse {
     private Long id;
     private String nome;
-    private String ReputacaoHistorica;
+    private String reputacaoHistorica;
     private Double saldo;
 }
