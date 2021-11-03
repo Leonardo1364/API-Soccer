@@ -1,7 +1,7 @@
 package com.desafios.soccer.service.clube;
 
-import com.desafios.soccer.model.dto.clube.ClubeRequestDto;
-import com.desafios.soccer.model.dto.clube.ClubeResponseDto;
+import com.desafios.soccer.service.model.clube.ClubeServiceRequest;
+import com.desafios.soccer.service.model.clube.ClubeServiceResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -9,15 +9,15 @@ import java.util.List;
 
 @AllArgsConstructor
 @Component
-public class ClubeFacadeImpl implements ClubeFacade {
+public class ClubeServiceFacadeImpl implements ClubeServiceFacade {
 
     private final ClubeService service;
 
-    public ClubeResponseDto saveClube(ClubeRequestDto clube) {
+    public ClubeServiceResponse saveClube(ClubeServiceRequest clube) {
         return service.saveClube(clube);
     }
 
-    public ClubeResponseDto updateClubeById(ClubeRequestDto clube, Long id) {
+    public ClubeServiceResponse updateClubeById(ClubeServiceRequest clube, Long id) {
         return service.updateClubeById(clube, id);
     }
 
@@ -25,11 +25,11 @@ public class ClubeFacadeImpl implements ClubeFacade {
         service.deleteClubeById(id);
     }
 
-    public ClubeResponseDto findClubeById(Long id) {
+    public ClubeServiceResponse findClubeById(Long id) {
         return service.findClubeById(id);
     }
 
-    public List<ClubeResponseDto> findAllClubes() {
+    public List<ClubeServiceResponse> findAllClubes() {
         return service.findAllClubes();
     }
 

@@ -1,7 +1,5 @@
 package com.desafios.soccer.contract.model.jogador;
 
-import javax.persistence.Id;
-
 public class JogadorControllerRequest {
     private Long id;
     private String nome;

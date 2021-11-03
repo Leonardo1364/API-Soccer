@@ -1,13 +1,14 @@
 package com.desafios.soccer.service.clube;
 
 import com.desafios.soccer.exceptions.notfound.NotFoundException;
-import com.desafios.soccer.mappers.ClubeMapper;
-import com.desafios.soccer.model.dto.clube.ClubeRequestDto;
-import com.desafios.soccer.model.dto.clube.ClubeResponseDto;
-import com.desafios.soccer.repository.repository.ClubeRepository;
 import com.desafios.soccer.repository.model.entity.Clube;
+import com.desafios.soccer.repository.repository.ClubeRepository;
+import com.desafios.soccer.service.mapper.clube.ClubeServiceMapper;
+import com.desafios.soccer.service.model.clube.ClubeServiceRequest;
+import com.desafios.soccer.service.model.clube.ClubeServiceResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,19 +18,19 @@ public class ClubeService {
 
     private final ClubeRepository repository;
 
-    public ClubeResponseDto saveClube(ClubeRequestDto clube) {
-        Clube clubeEntity = ClubeMapper.INSTANCE.toClubeEntity(clube);
+    public ClubeServiceResponse saveClube(ClubeServiceRequest clube) {
+        Clube clubeEntity = ClubeServiceMapper.INSTANCE.toClubeEntity(clube);
         Clube clubeSave = repository.save(clubeEntity);
-        return ClubeMapper.INSTANCE.toClubeResponse(clubeSave);
+        return ClubeServiceMapper.INSTANCE.toResponseService(clubeSave);
     }
 
-    public ClubeResponseDto updateClubeById(ClubeRequestDto clube, Long id) {
+    public ClubeServiceResponse updateClubeById(ClubeServiceRequest clube, Long id) {
         Clube clubeNome = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException("ID not found"));
         clube.setId(clubeNome.getId());
-        Clube clubeEntity = ClubeMapper.INSTANCE.toClubeEntity(clube);
+        Clube clubeEntity = ClubeServiceMapper.INSTANCE.toClubeEntity(clube);
         Clube clubeSave = repository.save(clubeEntity);
-        return ClubeMapper.INSTANCE.toClubeResponse(clubeSave);
+        return ClubeServiceMapper.INSTANCE.toResponseService(clubeSave);
     }
 
     public void deleteClubeById(Long id) {
@@ -38,16 +39,16 @@ public class ClubeService {
         repository.deleteById(id);
     }
 
-    public List<ClubeResponseDto> findAllClubes() {
+    public List<ClubeServiceResponse> findAllClubes() {
         return repository.findAll().stream()
-                .map(ClubeMapper.INSTANCE::toClubeResponse)
+                .map(ClubeServiceMapper.INSTANCE::toResponseService)
                 .collect(Collectors.toList());
     }
 
-    public ClubeResponseDto findClubeById(Long id) {
+    public ClubeServiceResponse findClubeById(Long id) {
         Clube clube = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException("ID not found"));
-        return ClubeMapper.INSTANCE.toClubeResponse(clube);
+        return ClubeServiceMapper.INSTANCE.toResponseService(clube);
     }
 
 }
