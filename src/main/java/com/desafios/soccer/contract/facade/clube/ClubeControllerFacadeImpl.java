@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.desafios.soccer.contract.mapper.clube.ClubeControllerRequestMapper.toClubeService;
 import static com.desafios.soccer.contract.mapper.clube.ClubeControllerResponseMapper.toClubeResponseController;
@@ -18,6 +17,7 @@ import static com.desafios.soccer.contract.mapper.clube.ClubeControllerResponseM
 @AllArgsConstructor
 @Component
 public class ClubeControllerFacadeImpl implements ClubeControllerFacade {
+
     private final ClubeServiceFacade facade;
 
     public ClubeControllerResponse saveClube(ClubeControllerRequest clube) {
@@ -44,6 +44,6 @@ public class ClubeControllerFacadeImpl implements ClubeControllerFacade {
     public List<ClubeControllerResponse> findAllClubes() {
         return facade.findAllClubes().stream()
                 .map(ClubeControllerResponseMapper::toClubeResponseController)
-                .collect(Collectors.toList());
+                .toList();
     }
 }

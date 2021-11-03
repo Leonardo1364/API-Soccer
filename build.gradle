@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.desafios'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 repositories {
 	mavenCentral()
@@ -20,8 +20,20 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql:42.2.24.jre7'
 	annotationProcessor 'org.projectlombok:lombok:1.18.22'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.5'
+	// https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+	// https://mvnrepository.com/artifact/javax.validation/validation-api
+	implementation group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
 	// https://mvnrepository.com/artifact/org.mapstruct/mapstruct
 	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-webflux
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.5.4'
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
+	implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.5.2'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
+	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.5.4'
+	// https://mvnrepository.com/artifact/org.javassist/javassist
+	implementation group: 'org.javassist', name: 'javassist', version: '3.27.0-GA'
 }
 
 test {
