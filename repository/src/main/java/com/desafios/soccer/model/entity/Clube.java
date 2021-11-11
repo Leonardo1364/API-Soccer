@@ -1,8 +1,10 @@
 package com.desafios.soccer.model.entity;
 
-import com.sun.istack.NotNull;
 import lombok.*;
+
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,21 +12,22 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Entity(name = "clube")
+@Entity
+@Table(name = "clube")
 public class Clube {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@Column(name = "name")
-    @NotNull
+    @Min(1)
+    @Max(255)
     private String nome;
 
-    //@Column(name = "reputacao_historica")
-    @NotNull
+    @Min(1)
+    @Max(255)
+    @Column(name = "reputacao_historica")
     private String reputacaoHistorica;
 
-    @NotNull
     private Double saldo;
 
 }

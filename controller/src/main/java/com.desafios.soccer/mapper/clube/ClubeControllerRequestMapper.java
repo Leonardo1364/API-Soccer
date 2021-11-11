@@ -5,7 +5,7 @@ import com.desafios.soccer.service.model.clube.ClubeServiceRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper()
 public interface ClubeControllerRequestMapper {
 
     static ClubeServiceRequest toClubeService(ClubeControllerRequest clubeRequest) {
