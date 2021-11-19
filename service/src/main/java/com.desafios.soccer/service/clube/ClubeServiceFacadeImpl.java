@@ -7,10 +7,9 @@ import com.desafios.soccer.service.mapper.clube.ClubeServiceResponseMapper;
 import com.desafios.soccer.service.model.clube.ClubeServiceRequest;
 import com.desafios.soccer.service.model.clube.ClubeServiceResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.desafios.soccer.service.mapper.clube.ClubeServiceRequestMapper.toClubeEntity;
 import static com.desafios.soccer.service.mapper.clube.ClubeServiceResponseMapper.toClubeResponse;
@@ -45,7 +44,7 @@ public class ClubeServiceFacadeImpl implements ClubeServiceFacade {
     public List<ClubeServiceResponse> findAllClubes() {
         return clubeRepository.findAll().stream()
                 .map(ClubeServiceResponseMapper::toClubeResponse)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public ClubeServiceResponse findClubeById(Long id) {

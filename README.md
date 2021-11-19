@@ -1,6 +1,5 @@
 # Mercado da Bola
 
-![Arena](https://portoimagem.files.wordpress.com/2013/08/blog-grc3aamio-1903-c3a0-noite-a-arena-fica-ainda-mais-bela.jpg)
 
 Segundo a [BBC](https://www.bbc.com/portuguese/geral-41240143), todos os anos, centenas de milhões de dólares são movimentados entre os clubes de futebol do mundo para a contratação de serviços de novos jogadores. A negociação entre os clubes e os jogadores se vale do interesse, momento e custos de ambos os lados. Sendo assim, nossa aplicação deve simular este processo, passando pelas etapas de consulta de interesse do atleta em jogar no clube em questão, avaliação do investimento necessário e a contratação do atleta.
 
@@ -39,7 +38,6 @@ RN07: o jogador deve possuir um método para transferencia de clube que, por con
 
 ##### Goleiro
 
-<img src="https://static-wp-tor15-prd.torcedores.com/wp-content/uploads/2018/12/gremio-marcelo-grohe.png"  width="200" height="120">
 
 _Regras de Negócio do Goleiro_
 
@@ -49,7 +47,6 @@ RN09: o cálculo do valor de compra do goleiro tem um acréscimo de 4% para cada
 
 ##### Zagueiro
 
-<img src="https://www.rbsdirect.com.br/imagesrc/25219958.jpg?w=700"  width="200" height="120">
 
 _Regras de Negócio do Zagueiro_
 
@@ -57,7 +54,6 @@ RN10: o cálculo do valor de compra do zagueiro tem um desconto de 20% sobre o v
 
 ##### Meio-Campo
 
-<img src="https://radaramazonico.com.br/wp-content/uploads/2019/08/naom_5d5670e6f3326.jpg"  width="200" height="120">
 
 _Regras de Negócio do Meio-Campo_
 
@@ -67,7 +63,6 @@ RN12: meio-campista tem interesse em mudar de clube somente quando a reputação
 
 ##### Lateral
 
-<img src="https://s2.glbimg.com/qPjch9R4-retq7FwiP_D5yPiZVI=/1200x/smart/filters:cover():strip_icc()/s.glbimg.com/es/ge/f/original/2020/01/13/ferraz.jpg"  width="200" height="120">
 
 _Regras de Negócio do Lateral_
 
@@ -79,7 +74,6 @@ RN15: o cálculo do valor de compra do lateral tem um desconto de 30% sobre o va
 
 ##### Atacante
 
-<img src="https://i0.statig.com.br/bancodeimagens/cb/kb/b4/cbkbb4p1cqbf03n7dtyp1cy5n.jpg"  width="200" height="120">
 
 _Regras de Negócio do Atacante_
 

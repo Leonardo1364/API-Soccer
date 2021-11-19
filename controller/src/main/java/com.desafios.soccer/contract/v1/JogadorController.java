@@ -6,6 +6,8 @@ import com.desafios.soccer.model.jogador.JogadorControllerResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static org.springframework.http.HttpStatus.CREATED;
 
 @AllArgsConstructor
@@ -17,7 +19,7 @@ public class JogadorController {
 
     @PostMapping()
     @ResponseStatus(CREATED)
-    public JogadorControllerResponse saveJogador(@RequestBody JogadorControllerRequest jogador) {
+    public JogadorControllerResponse saveJogador(@RequestBody @Valid JogadorControllerRequest jogador) {
         return facade.saveJogador(jogador);
     }
 

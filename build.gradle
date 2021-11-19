@@ -1,9 +1,7 @@
 plugins {
-
 	id 'org.springframework.boot' version '2.5.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-
 }
 
 //mainClassName: 'com.desafios.soccer'
@@ -13,13 +11,12 @@ dependencies {
 }
 
 allprojects {
-
 	apply plugin: 'java'
 	apply plugin: 'io.spring.dependency-management'
 
 	group = 'com.desafios'
 	version = '0.0.1-SNAPSHOT'
-	sourceCompatibility = '17'
+	sourceCompatibility = JavaVersion.VERSION_11
 
 	repositories {
 		mavenCentral()
@@ -30,8 +27,6 @@ allprojects {
 		implementation 'org.springframework.boot:spring-boot-starter-web:2.5.6'
 		implementation 'javax.validation:validation-api:2.0.1.Final'
 		implementation 'org.mapstruct:mapstruct:1.4.2.Final'
-		implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
-		implementation 'org.javassist:javassist:3.28.0-GA'
 		compileOnly 'org.projectlombok:lombok:1.18.22'
 		runtimeOnly 'com.h2database:h2:1.4.200'
 		runtimeOnly 'org.postgresql:postgresql:42.3.1'
