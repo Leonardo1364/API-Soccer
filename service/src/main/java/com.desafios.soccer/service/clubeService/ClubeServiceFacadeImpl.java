@@ -1,18 +1,18 @@
-package com.desafios.soccer.service.clube;
+package com.desafios.soccer.service.clubeService;
 
 import com.desafios.soccer.exceptions.notfound.NotFoundException;
 import com.desafios.soccer.model.entity.Clube;
 import com.desafios.soccer.repository.ClubeRepository;
-import com.desafios.soccer.service.mapper.clube.ClubeServiceResponseMapper;
-import com.desafios.soccer.service.model.clube.ClubeServiceRequest;
-import com.desafios.soccer.service.model.clube.ClubeServiceResponse;
+import com.desafios.soccer.service.mapper.response.ClubeServiceResponseMapper;
+import com.desafios.soccer.service.model.request.ClubeServiceRequest;
+import com.desafios.soccer.service.model.response.ClubeServiceResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.desafios.soccer.service.mapper.clube.ClubeServiceRequestMapper.toClubeEntity;
-import static com.desafios.soccer.service.mapper.clube.ClubeServiceResponseMapper.toClubeResponse;
+import static com.desafios.soccer.service.mapper.request.ClubeServiceRequestMapper.toClubeEntity;
+import static com.desafios.soccer.service.mapper.response.ClubeServiceResponseMapper.toClubeResponse;
 
 @AllArgsConstructor
 @Component

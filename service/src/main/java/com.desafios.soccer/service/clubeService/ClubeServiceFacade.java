@@ -1,7 +1,7 @@
-package com.desafios.soccer.service.clube;
+package com.desafios.soccer.service.clubeService;
 
-import com.desafios.soccer.service.model.clube.ClubeServiceRequest;
-import com.desafios.soccer.service.model.clube.ClubeServiceResponse;
+import com.desafios.soccer.service.model.request.ClubeServiceRequest;
+import com.desafios.soccer.service.model.response.ClubeServiceResponse;
 import java.util.List;
 
 public interface ClubeServiceFacade {

@@ -1,18 +1,18 @@
 package com.desafios.soccer.contract.facade.clube;
 
-import com.desafios.soccer.mapper.clube.ClubeControllerResponseMapper;
-import com.desafios.soccer.model.clube.ClubeControllerRequest;
-import com.desafios.soccer.model.clube.ClubeControllerResponse;
-import com.desafios.soccer.service.clube.ClubeServiceFacade;
-import com.desafios.soccer.service.model.clube.ClubeServiceRequest;
-import com.desafios.soccer.service.model.clube.ClubeServiceResponse;
+import com.desafios.soccer.mapper.response.ClubeControllerResponseMapper;
+import com.desafios.soccer.model.request.ClubeControllerRequest;
+import com.desafios.soccer.model.response.ClubeControllerResponse;
+import com.desafios.soccer.service.clubeService.ClubeServiceFacade;
+import com.desafios.soccer.service.model.request.ClubeServiceRequest;
+import com.desafios.soccer.service.model.response.ClubeServiceResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.desafios.soccer.mapper.clube.ClubeControllerRequestMapper.toClubeService;
-import static com.desafios.soccer.mapper.clube.ClubeControllerResponseMapper.toClubeResponseController;
+import static com.desafios.soccer.mapper.request.ClubeControllerRequestMapper.toClubeService;
+import static com.desafios.soccer.mapper.response.ClubeControllerResponseMapper.toClubeResponseController;
 
 @AllArgsConstructor
 @Component

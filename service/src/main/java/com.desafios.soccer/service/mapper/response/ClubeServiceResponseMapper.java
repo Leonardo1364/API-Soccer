@@ -1,7 +1,7 @@
-package com.desafios.soccer.service.mapper.clube;
+package com.desafios.soccer.service.mapper.response;
 
 import com.desafios.soccer.model.entity.Clube;
-import com.desafios.soccer.service.model.clube.ClubeServiceResponse;
+import com.desafios.soccer.service.model.response.ClubeServiceResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

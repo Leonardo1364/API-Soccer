@@ -1,19 +1,19 @@
-package com.desafios.soccer.service.jogador;
+package com.desafios.soccer.service.jogadorService;
 
 import com.desafios.soccer.exceptions.notfound.NotFoundException;
 import com.desafios.soccer.model.entity.Jogador;
 import com.desafios.soccer.repository.JogadorRepository;
-import com.desafios.soccer.service.mapper.jogador.JogadorServiceResponseMapper;
-import com.desafios.soccer.service.model.jogador.JogadorServiceRequest;
-import com.desafios.soccer.service.model.jogador.JogadorServiceResponse;
+import com.desafios.soccer.service.mapper.response.JogadorServiceResponseMapper;
+import com.desafios.soccer.service.model.request.JogadorServiceRequest;
+import com.desafios.soccer.service.model.response.JogadorServiceResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.desafios.soccer.service.mapper.jogador.JogadorServiceRequestMapper.toJogadorEntity;
-import static com.desafios.soccer.service.mapper.jogador.JogadorServiceResponseMapper.toJogadorResponse;
+import static com.desafios.soccer.service.mapper.request.JogadorServiceRequestMapper.toJogadorEntity;
+import static com.desafios.soccer.service.mapper.response.JogadorServiceResponseMapper.toJogadorResponse;
 
 @AllArgsConstructor
 @Component

@@ -1,4 +1,4 @@
-package com.desafios.soccer.model.jogador;
+package com.desafios.soccer.service.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class JogadorControllerResponse {
+public class JogadorServiceResponse {
     private Long id;
     private String nome;
     private Integer idade;

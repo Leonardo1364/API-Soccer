@@ -1,8 +1,8 @@
 package com.desafios.soccer.contract.v1;
 
 import com.desafios.soccer.contract.facade.jogador.JogadorControllerFacade;
-import com.desafios.soccer.model.jogador.JogadorControllerRequest;
-import com.desafios.soccer.model.jogador.JogadorControllerResponse;
+import com.desafios.soccer.model.request.JogadorControllerRequest;
+import com.desafios.soccer.model.response.JogadorControllerResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

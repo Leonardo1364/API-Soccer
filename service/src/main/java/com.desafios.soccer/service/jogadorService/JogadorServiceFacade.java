@@ -1,7 +1,7 @@
-package com.desafios.soccer.service.jogador;
+package com.desafios.soccer.service.jogadorService;
 
-import com.desafios.soccer.service.model.jogador.JogadorServiceRequest;
-import com.desafios.soccer.service.model.jogador.JogadorServiceResponse;
+import com.desafios.soccer.service.model.request.JogadorServiceRequest;
+import com.desafios.soccer.service.model.response.JogadorServiceResponse;
 
 import java.util.List;
 

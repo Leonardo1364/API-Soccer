@@ -1,8 +1,8 @@
 package com.desafios.soccer.contract.v1;
 
 import com.desafios.soccer.contract.facade.clube.ClubeControllerFacade;
-import com.desafios.soccer.model.clube.ClubeControllerRequest;
-import com.desafios.soccer.model.clube.ClubeControllerResponse;
+import com.desafios.soccer.model.request.ClubeControllerRequest;
+import com.desafios.soccer.model.response.ClubeControllerResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +26,7 @@ public class ClubeController {
 
     @PutMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
-    public ClubeControllerResponse updateClubeById(@RequestBody ClubeControllerRequest clube, @PathVariable Long id) {
+    public ClubeControllerResponse updateClubeById(@RequestBody @Valid ClubeControllerRequest clube, @PathVariable Long id) {
         return facade.updateClubeById(clube, id);
     }
 

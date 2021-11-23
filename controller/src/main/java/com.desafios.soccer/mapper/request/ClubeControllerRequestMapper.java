@@ -1,7 +1,7 @@
-package com.desafios.soccer.mapper.clube;
+package com.desafios.soccer.mapper.request;
 
-import com.desafios.soccer.model.clube.ClubeControllerRequest;
-import com.desafios.soccer.service.model.clube.ClubeServiceRequest;
+import com.desafios.soccer.model.request.ClubeControllerRequest;
+import com.desafios.soccer.service.model.request.ClubeServiceRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

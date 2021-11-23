@@ -1,4 +1,4 @@
-package com.desafios.soccer.service.model.clube;
+package com.desafios.soccer.service.model.response;
 
 import lombok.*;
 

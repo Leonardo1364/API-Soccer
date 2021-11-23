@@ -1,4 +1,4 @@
-package com.desafios.soccer.model.jogador;
+package com.desafios.soccer.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

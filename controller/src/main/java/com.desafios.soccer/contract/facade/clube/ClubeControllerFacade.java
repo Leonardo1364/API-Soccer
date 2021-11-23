@@ -1,7 +1,7 @@
 package com.desafios.soccer.contract.facade.clube;
 
-import com.desafios.soccer.model.clube.ClubeControllerRequest;
-import com.desafios.soccer.model.clube.ClubeControllerResponse;
+import com.desafios.soccer.model.request.ClubeControllerRequest;
+import com.desafios.soccer.model.response.ClubeControllerResponse;
 
 import java.util.List;
 

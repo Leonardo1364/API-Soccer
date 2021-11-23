@@ -1,7 +1,7 @@
-package com.desafios.soccer.mapper.jogador;
+package com.desafios.soccer.mapper.response;
 
-import com.desafios.soccer.model.jogador.JogadorControllerResponse;
-import com.desafios.soccer.service.model.jogador.JogadorServiceResponse;
+import com.desafios.soccer.model.response.JogadorControllerResponse;
+import com.desafios.soccer.service.model.response.JogadorServiceResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

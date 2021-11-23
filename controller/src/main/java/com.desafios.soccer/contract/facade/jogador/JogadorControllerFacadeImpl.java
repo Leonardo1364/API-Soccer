@@ -1,19 +1,19 @@
 package com.desafios.soccer.contract.facade.jogador;
 
-import com.desafios.soccer.mapper.jogador.JogadorControllerResponseMapper;
-import com.desafios.soccer.model.jogador.JogadorControllerRequest;
-import com.desafios.soccer.model.jogador.JogadorControllerResponse;
-import com.desafios.soccer.service.jogador.JogadorServiceFacade;
-import com.desafios.soccer.service.model.jogador.JogadorServiceRequest;
-import com.desafios.soccer.service.model.jogador.JogadorServiceResponse;
+import com.desafios.soccer.mapper.response.JogadorControllerResponseMapper;
+import com.desafios.soccer.model.request.JogadorControllerRequest;
+import com.desafios.soccer.model.response.JogadorControllerResponse;
+import com.desafios.soccer.service.jogadorService.JogadorServiceFacade;
+import com.desafios.soccer.service.model.request.JogadorServiceRequest;
+import com.desafios.soccer.service.model.response.JogadorServiceResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.desafios.soccer.mapper.jogador.JogadorControllerRequestMapper.toJogadorService;
-import static com.desafios.soccer.mapper.jogador.JogadorControllerResponseMapper.toJogadorResponseController;
+import static com.desafios.soccer.mapper.request.JogadorControllerRequestMapper.toJogadorService;
+import static com.desafios.soccer.mapper.response.JogadorControllerResponseMapper.toJogadorResponseController;
 
 @AllArgsConstructor
 @Component
