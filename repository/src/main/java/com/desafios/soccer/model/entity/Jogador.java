@@ -1,9 +1,8 @@
 package com.desafios.soccer.model.entity;
 
 import lombok.*;
+
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 
 @AllArgsConstructor
 @NoArgsConstructor

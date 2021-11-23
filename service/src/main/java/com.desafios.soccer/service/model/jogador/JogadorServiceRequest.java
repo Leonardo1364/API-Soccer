@@ -1,5 +1,14 @@
 package com.desafios.soccer.service.model.jogador;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class JogadorServiceRequest {
     private Long id;
     private String nome;
