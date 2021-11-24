@@ -14,8 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.*;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -50,14 +49,14 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    @ResponseStatus(BAD_REQUEST)
+    @ResponseStatus(INTERNAL_SERVER_ERROR)
     public ExceptionDetailsBadRequest handlerBadRequest(){
         return ExceptionDetailsBadRequest.builder()
-                .status(BAD_REQUEST.value())
-                .title("Bad request")
+                .status(INTERNAL_SERVER_ERROR.value())
+                .title("Internal server error")
                 .timestamp(Instant.now())
-                .details("the server cannot process this request due to some error")
-                .developerMessage("Check the request")
+                .details("some unexpected error occurred")
+                .developerMessage("the application raised an unhandled exception")
                 .build();
     }
 
