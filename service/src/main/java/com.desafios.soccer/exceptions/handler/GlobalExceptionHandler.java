@@ -29,7 +29,6 @@ public class GlobalExceptionHandler {
                 .details(e.getMessage())
                 .developerMessage("Enter a valid ID. Be sure this value exists.")
                 .build();
-
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
