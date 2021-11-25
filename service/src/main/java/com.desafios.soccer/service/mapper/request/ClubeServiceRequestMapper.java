@@ -7,6 +7,10 @@ import com.desafios.soccer.service.model.request.ClubeServiceRequest;
 public interface ClubeServiceRequestMapper {
 
     static Clube toClubeEntity(ClubeServiceRequest clubeRequest) {
+        if (clubeRequest == null) {
+            return null;
+        }
+
         return Clube.builder()
                 .id(clubeRequest.getId())
                 .nome(clubeRequest.getNome())

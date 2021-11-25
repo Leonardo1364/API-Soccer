@@ -7,6 +7,10 @@ import com.desafios.soccer.service.model.request.JogadorServiceRequest;
 public interface JogadorControllerRequestMapper {
 
     static JogadorServiceRequest toJogadorService(JogadorControllerRequest jogadorRequest) {
+        if (jogadorRequest == null) {
+            return null;
+        }
+
         return JogadorServiceRequest.builder()
                 .id(jogadorRequest.getId())
                 .nome(jogadorRequest.getNome())

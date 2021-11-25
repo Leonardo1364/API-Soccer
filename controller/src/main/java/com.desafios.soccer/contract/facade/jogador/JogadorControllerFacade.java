@@ -9,7 +9,7 @@ public interface JogadorControllerFacade {
 
     JogadorControllerResponse saveJogador(JogadorControllerRequest jogador);
 
-    JogadorControllerResponse updateJogador(JogadorControllerRequest jogador, Long id);
+    JogadorControllerResponse updateJogadorById(JogadorControllerRequest jogador, Long id);
 
     void deleteJogadorById(Long id);
 

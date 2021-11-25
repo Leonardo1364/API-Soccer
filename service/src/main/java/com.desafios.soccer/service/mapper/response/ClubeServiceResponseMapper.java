@@ -6,12 +6,16 @@ import com.desafios.soccer.service.model.response.ClubeServiceResponse;
 //@Mapper
 public interface ClubeServiceResponseMapper {
 
-    static ClubeServiceResponse toClubeResponse(Clube clubeRequest) {
+    static ClubeServiceResponse toClubeResponse(Clube clubeResponse) {
+        if (clubeResponse == null) {
+            return null;
+        }
+
         return ClubeServiceResponse.builder()
-                .id(clubeRequest.getId())
-                .nome(clubeRequest.getNome())
-                .reputacaoHistorica(clubeRequest.getReputacaoHistorica())
-                .saldo(clubeRequest.getSaldo())
+                .id(clubeResponse.getId())
+                .nome(clubeResponse.getNome())
+                .reputacaoHistorica(clubeResponse.getReputacaoHistorica())
+                .saldo(clubeResponse.getSaldo())
                 .build();
     }
 

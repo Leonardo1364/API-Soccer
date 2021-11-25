@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-import static org.springframework.http.HttpStatus.CREATED;
+import java.util.List;
+
+import static org.springframework.http.HttpStatus.*;
 
 @AllArgsConstructor
 @RestController
@@ -21,6 +23,30 @@ public class JogadorController {
     @ResponseStatus(CREATED)
     public JogadorControllerResponse saveJogador(@RequestBody @Valid JogadorControllerRequest jogador) {
         return facade.saveJogador(jogador);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(NO_CONTENT)
+    public JogadorControllerResponse updateJogadorById(@RequestBody @Valid JogadorControllerRequest jogador, @PathVariable Long id) {
+        return facade.updateJogadorById(jogador, id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(NO_CONTENT)
+    public void deleteJogadorById(@PathVariable Long id) {
+        facade.deleteJogadorById(id);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(OK)
+    public JogadorControllerResponse findJogadorById(@PathVariable Long id) {
+        return facade.findJogadorById(id);
+    }
+
+    @GetMapping
+    @ResponseStatus(OK)
+    public List<JogadorControllerResponse> findAllJogadores() {
+        return facade.findAllJogadores();
     }
 
 }

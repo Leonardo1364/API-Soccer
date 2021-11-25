@@ -7,6 +7,10 @@ import com.desafios.soccer.service.model.response.JogadorServiceResponse;
 public interface JogadorServiceResponseMapper {
 
     static JogadorServiceResponse toJogadorResponse(Jogador jogadorResponse) {
+        if (jogadorResponse == null) {
+            return null;
+        }
+
         return JogadorServiceResponse.builder()
                 .id(jogadorResponse.getId())
                 .nome(jogadorResponse.getNome())

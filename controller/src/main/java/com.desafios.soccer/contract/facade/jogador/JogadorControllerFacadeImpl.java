@@ -27,7 +27,7 @@ public class JogadorControllerFacadeImpl implements JogadorControllerFacade {
         return toJogadorResponseController(jogadorResponse);
     }
 
-    public JogadorControllerResponse updateJogador(JogadorControllerRequest jogador, Long id) {
+    public JogadorControllerResponse updateJogadorById(JogadorControllerRequest jogador, Long id) {
         JogadorServiceRequest jogadorSave = toJogadorService(jogador);
         JogadorServiceResponse jogadorResponse = facade.updateJogadorById(jogadorSave, id);
         return toJogadorResponseController(jogadorResponse);

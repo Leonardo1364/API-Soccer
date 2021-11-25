@@ -7,6 +7,10 @@ import com.desafios.soccer.service.model.request.JogadorServiceRequest;
 public interface JogadorServiceRequestMapper {
 
     static Jogador toJogadorEntity(JogadorServiceRequest jogadorRequest) {
+        if (jogadorRequest == null) {
+            return null;
+        }
+
         return Jogador.builder()
                 .id(jogadorRequest.getId())
                 .nome(jogadorRequest.getNome())
