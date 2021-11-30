@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -19,19 +20,19 @@ public class JogadorControllerRequest {
     @Size(min = 1, max = 255, message = "Min 1 and Max 255 characters.")
     private String nome;
 
-    @NotBlank
+    @DecimalMin(value = "12", message = "invalid age")
     private Integer idade;
 
     @NotBlank
     @Size(min = 1, max = 255, message = "Min 1 and Max 255 characters.")
     private String clubeAtual;
 
-    @NotBlank
+    @DecimalMin("1")
     private Integer reputacaoHistorica;
 
-    @NotBlank
+    @DecimalMin("1")
     private Double apetiteFinanceiro;
 
-    @NotBlank
+    @DecimalMin("1")
     private Double preco;
 }

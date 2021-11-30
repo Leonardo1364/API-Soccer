@@ -3,7 +3,7 @@ package com.desafios.soccer.contract.facade.jogador;
 import com.desafios.soccer.mapper.response.JogadorControllerResponseMapper;
 import com.desafios.soccer.model.request.JogadorControllerRequest;
 import com.desafios.soccer.model.response.JogadorControllerResponse;
-import com.desafios.soccer.service.jogadorService.JogadorServiceFacade;
+import com.desafios.soccer.service.v1.jogadorService.JogadorServiceFacade;
 import com.desafios.soccer.service.model.request.JogadorServiceRequest;
 import com.desafios.soccer.service.model.response.JogadorServiceResponse;
 import lombok.AllArgsConstructor;

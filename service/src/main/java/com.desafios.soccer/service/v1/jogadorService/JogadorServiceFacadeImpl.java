@@ -1,4 +1,4 @@
-package com.desafios.soccer.service.jogadorService;
+package com.desafios.soccer.service.v1.jogadorService;
 
 import com.desafios.soccer.exceptions.notfound.NotFoundException;
 import com.desafios.soccer.model.entity.Jogador;

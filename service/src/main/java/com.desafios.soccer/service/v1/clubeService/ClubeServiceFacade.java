@@ -1,4 +1,4 @@
-package com.desafios.soccer.service.clubeService;
+package com.desafios.soccer.service.v1.clubeService;
 
 import com.desafios.soccer.service.model.request.ClubeServiceRequest;
 import com.desafios.soccer.service.model.response.ClubeServiceResponse;

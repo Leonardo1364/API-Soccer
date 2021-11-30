@@ -3,12 +3,15 @@ package com.desafios.soccer.exceptions.handler;
 import com.desafios.soccer.exceptions.details.ExceptionDetailsBadRequest;
 import com.desafios.soccer.exceptions.details.ExceptionDetailsNotFound;
 import com.desafios.soccer.exceptions.details.ExceptionMethodNotValidDetails;
+import com.desafios.soccer.exceptions.details.ExceptionServerErrorDetails;
 import com.desafios.soccer.exceptions.notfound.NotFoundException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException.*;
+
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
@@ -47,10 +50,22 @@ public class GlobalExceptionHandler {
                 .build();
     }
 
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(BadRequest.class)
+    @ResponseStatus(BAD_REQUEST)
     public ExceptionDetailsBadRequest handlerBadRequest(){
         return ExceptionDetailsBadRequest.builder()
+                .status(BAD_REQUEST.value())
+                .title("Bad request")
+                .timestamp(Instant.now())
+                .details("Error! Check your request!")
+                .developerMessage("the server did not understand your request!")
+                .build();
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(INTERNAL_SERVER_ERROR)
+    public ExceptionServerErrorDetails handlerServerError(){
+        return ExceptionServerErrorDetails.builder()
                 .status(INTERNAL_SERVER_ERROR.value())
                 .title("Internal server error")
                 .timestamp(Instant.now())

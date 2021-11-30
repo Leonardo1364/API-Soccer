@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -23,6 +24,14 @@ public class ClubeControllerRequest {
     @Size(min = 3, max = 255, message = "Min 1 and Max 255 characters.")
     private String reputacaoHistorica;
 
-    @NotBlank
+    @DecimalMin("1")
     private Double saldo;
+
+    public void setNome(String nome) {
+        this.nome = nome.strip();
+    }
+
+    public void setReputacaoHistorica(String reputacaoHistorica) {
+        this.reputacaoHistorica = reputacaoHistorica.strip();
+    }
 }

@@ -3,7 +3,7 @@ package com.desafios.soccer.contract.facade.clube;
 import com.desafios.soccer.mapper.response.ClubeControllerResponseMapper;
 import com.desafios.soccer.model.request.ClubeControllerRequest;
 import com.desafios.soccer.model.response.ClubeControllerResponse;
-import com.desafios.soccer.service.clubeService.ClubeServiceFacade;
+import com.desafios.soccer.service.v1.clubeService.ClubeServiceFacade;
 import com.desafios.soccer.service.model.request.ClubeServiceRequest;
 import com.desafios.soccer.service.model.response.ClubeServiceResponse;
 import lombok.AllArgsConstructor;

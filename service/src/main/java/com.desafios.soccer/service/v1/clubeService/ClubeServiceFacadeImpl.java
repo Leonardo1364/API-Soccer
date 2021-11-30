@@ -1,4 +1,4 @@
-package com.desafios.soccer.service.clubeService;
+package com.desafios.soccer.service.v1.clubeService;
 
 import com.desafios.soccer.exceptions.notfound.NotFoundException;
 import com.desafios.soccer.model.entity.Clube;

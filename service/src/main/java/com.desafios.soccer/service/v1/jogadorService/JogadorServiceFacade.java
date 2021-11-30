@@ -1,4 +1,4 @@
-package com.desafios.soccer.service.jogadorService;
+package com.desafios.soccer.service.v1.jogadorService;
 
 import com.desafios.soccer.service.model.request.JogadorServiceRequest;
 import com.desafios.soccer.service.model.response.JogadorServiceResponse;
