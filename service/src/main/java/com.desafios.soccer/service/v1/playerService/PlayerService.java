@@ -7,17 +7,16 @@ import com.desafios.soccer.service.mapper.response.PlayerServiceResponseMapper;
 import com.desafios.soccer.service.model.request.PlayerServiceRequest;
 import com.desafios.soccer.service.model.response.PlayerServiceResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.desafios.soccer.service.mapper.request.PlayerServiceRequestMapper.toPlayerEntity;
 import static com.desafios.soccer.service.mapper.response.PlayerServiceResponseMapper.toPlayerResponse;
 
 @AllArgsConstructor
-@Component
-public class PlayerServiceFacadeImpl implements PlayerServiceFacade {
+@Service
+public class PlayerService {
 
     private final PlayerRepository playerRepository;
 
@@ -28,17 +27,13 @@ public class PlayerServiceFacadeImpl implements PlayerServiceFacade {
     }
 
     public PlayerServiceResponse updatePlayerById(PlayerServiceRequest player, String id) {
-        Player playerName = playerRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("ID not found"));
-        player.setId(playerName.getId());
+        player.setId(id);
         Player playerEntity = toPlayerEntity(player);
         Player playerSave = playerRepository.save(playerEntity);
         return toPlayerResponse(playerSave);
     }
 
     public void deletePlayerById(String id) {
-        playerRepository.findById(id)
-                        .orElseThrow(() -> new NotFoundException("ID not found"));
         playerRepository.deleteById(id);
     }
 
@@ -51,7 +46,7 @@ public class PlayerServiceFacadeImpl implements PlayerServiceFacade {
     public List<PlayerServiceResponse> findAllPlayers() {
         return playerRepository.findAll().stream()
                 .map(PlayerServiceResponseMapper::toPlayerResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 }
 

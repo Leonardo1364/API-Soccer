@@ -1,6 +1,6 @@
-package com.desafios.soccer.mapper.response;
+package com.desafios.soccer.contract.mapper.response;
 
-import com.desafios.soccer.model.response.PlayerControllerResponse;
+import com.desafios.soccer.contract.model.response.PlayerControllerResponse;
 import com.desafios.soccer.service.model.response.PlayerServiceResponse;
 
 //@Mapper()

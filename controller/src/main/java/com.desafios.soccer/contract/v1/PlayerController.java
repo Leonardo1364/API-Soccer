@@ -1,8 +1,8 @@
 package com.desafios.soccer.contract.v1;
 
 import com.desafios.soccer.contract.facade.jogador.PlayerControllerFacade;
-import com.desafios.soccer.model.request.PlayerControllerRequest;
-import com.desafios.soccer.model.response.PlayerControllerResponse;
+import com.desafios.soccer.contract.model.request.PlayerControllerRequest;
+import com.desafios.soccer.contract.model.response.PlayerControllerResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +27,8 @@ public class PlayerController {
 
     @PutMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
-    public PlayerControllerResponse updatePlayerById(@RequestBody @Valid PlayerControllerRequest player, @PathVariable String id) {
+    public PlayerControllerResponse updatePlayerById(@RequestBody @Valid PlayerControllerRequest player,
+                                                     @PathVariable String id) {
         return facade.updatePlayerById(player, id);
     }
 

@@ -1,9 +1,13 @@
 package com.desafios.soccer.model.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,4 +23,6 @@ public class Team {
     private String historicalReputation;
 
     private Double balance;
+
+    private LocalDate date;
 }

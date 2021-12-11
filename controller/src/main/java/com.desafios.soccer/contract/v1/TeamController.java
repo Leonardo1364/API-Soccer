@@ -1,8 +1,8 @@
 package com.desafios.soccer.contract.v1;
 
 import com.desafios.soccer.contract.facade.clube.TeamControllerFacade;
-import com.desafios.soccer.model.request.TeamControllerRequest;
-import com.desafios.soccer.model.response.TeamControllerResponse;
+import com.desafios.soccer.contract.model.request.TeamControllerRequest;
+import com.desafios.soccer.contract.model.response.TeamControllerResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +25,17 @@ public class TeamController {
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(NO_CONTENT)
-    public TeamControllerResponse updateTeamById(@RequestBody @Valid TeamControllerRequest team, @PathVariable String id) {
+    @ResponseStatus(OK)
+    public TeamControllerResponse updateTeamById(@RequestBody @Valid TeamControllerRequest team,
+                                                 @PathVariable String id) {
         return facade.updateTeamById(team, id);
+    }
+
+    @PatchMapping("/{id}")
+    @ResponseStatus(OK)
+    public TeamControllerResponse patchTeam(@RequestBody @Valid TeamControllerRequest team, @PathVariable String id) {
+        team.setName(findTeamById(id).getName());
+        return facade.patchTeam(team, id);
     }
 
     @DeleteMapping("/{id}")
@@ -38,10 +46,10 @@ public class TeamController {
 
     //DELETE - v1/clube/1/jogadores?idJogadores=1&idJogadores=7
     //DELETE v1/clube/1/jogadores
-    @DeleteMapping("/{id}/jogadores")
+    @DeleteMapping("/{id}/players")
     @ResponseStatus(NO_CONTENT)
-    public void deletePlayers(@PathVariable Long id, @RequestParam List<Long> idPlayers) {
-
+    public void deletePlayers(@PathVariable Long id, @RequestParam List<String> idPlayers) {
+        System.out.println("Teste" + idPlayers);
     }
 
     @GetMapping("/{id}")

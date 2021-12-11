@@ -7,16 +7,16 @@ import com.desafios.soccer.service.mapper.response.TeamServiceResponseMapper;
 import com.desafios.soccer.service.model.request.TeamServiceRequest;
 import com.desafios.soccer.service.model.response.TeamServiceResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.desafios.soccer.service.mapper.request.TeamServiceRequestMapper.toTeamEntity;
 import static com.desafios.soccer.service.mapper.response.TeamServiceResponseMapper.toTeamResponse;
 
 @AllArgsConstructor
-@Component
-public class TeamServiceFacadeImpl implements TeamServiceFacade {
+@Service
+public class TeamService {
 
     private final TeamRepository teamRepository;
 
@@ -27,30 +27,34 @@ public class TeamServiceFacadeImpl implements TeamServiceFacade {
     }
 
     public TeamServiceResponse updateTeamById(TeamServiceRequest team, String id) {
-        Team TeamName = teamRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("ID not found"));
-        team.setId(TeamName.getId());
+        team.setId(id);
+        Team teamEntity = toTeamEntity(team);
+        Team teamSave = teamRepository.save(teamEntity);
+        return toTeamResponse(teamSave);
+    }
+
+    public TeamServiceResponse patchTeam(TeamServiceRequest team, String id) {
+        TeamServiceResponse teamById = findTeamById(id);
+        teamById.setName(team.getName());
         Team teamEntity = toTeamEntity(team);
         Team teamSave = teamRepository.save(teamEntity);
         return toTeamResponse(teamSave);
     }
 
     public void deleteTeamById(String id) {
-        teamRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("ID not found"));
         teamRepository.deleteById(id);
+    }
+
+    public TeamServiceResponse findTeamById(String id) {
+        Team teamName = teamRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("ID not found"));
+        return toTeamResponse(teamName);
     }
 
     public List<TeamServiceResponse> findAllTeams() {
         return teamRepository.findAll().stream()
                 .map(TeamServiceResponseMapper::toTeamResponse)
-                .collect(Collectors.toList());
-    }
-
-    public TeamServiceResponse findTeamById(String id) {
-        Team team = teamRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("ID not found"));
-        return toTeamResponse(team);
+                .toList();
     }
 
 }

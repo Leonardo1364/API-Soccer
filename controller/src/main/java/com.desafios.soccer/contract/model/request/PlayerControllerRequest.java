@@ -1,4 +1,4 @@
-package com.desafios.soccer.model.request;
+package com.desafios.soccer.contract.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
 @Builder
 public class PlayerControllerRequest {
     private String id;
+
 
     @NotBlank
     @Size(min = 1, max = 255, message = "Min 1 and Max 255 characters.")

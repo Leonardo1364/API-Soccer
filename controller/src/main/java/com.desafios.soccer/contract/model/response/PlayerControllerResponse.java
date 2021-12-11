@@ -1,4 +1,4 @@
-package com.desafios.soccer.model.response;
+package com.desafios.soccer.contract.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

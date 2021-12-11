@@ -1,6 +1,6 @@
-package com.desafios.soccer.mapper.request;
+package com.desafios.soccer.contract.mapper.request;
 
-import com.desafios.soccer.model.request.TeamControllerRequest;
+import com.desafios.soccer.contract.model.request.TeamControllerRequest;
 import com.desafios.soccer.service.model.request.TeamServiceRequest;
 
 //@Mapper()
@@ -16,10 +16,11 @@ public interface TeamControllerRequestMapper {
                 .name(teamRequest.getName())
                 .historicalReputation(teamRequest.getHistoricalReputation())
                 .balance(teamRequest.getBalance())
+                .date(teamRequest.getDate())
                 .build();
     }
-/*
 
+/*
     static TeamServiceRequest toTeamService(TeamControllerRequest teamRequest) {
         return Mappers.getMapper(TeamControllerRequestMapper.class)
                 .mapperRequest(teamRequest);

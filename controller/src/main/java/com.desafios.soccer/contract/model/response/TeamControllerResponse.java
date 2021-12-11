@@ -1,9 +1,11 @@
-package com.desafios.soccer.model.response;
+package com.desafios.soccer.contract.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,4 +16,5 @@ public class TeamControllerResponse {
     private String name;
     private String historicalReputation;
     private Double balance;
+    private LocalDate date;
 }

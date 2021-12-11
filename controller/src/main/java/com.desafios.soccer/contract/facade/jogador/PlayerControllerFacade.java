@@ -1,7 +1,7 @@
 package com.desafios.soccer.contract.facade.jogador;
 
-import com.desafios.soccer.model.request.PlayerControllerRequest;
-import com.desafios.soccer.model.response.PlayerControllerResponse;
+import com.desafios.soccer.contract.model.request.PlayerControllerRequest;
+import com.desafios.soccer.contract.model.response.PlayerControllerResponse;
 
 import java.util.List;
 

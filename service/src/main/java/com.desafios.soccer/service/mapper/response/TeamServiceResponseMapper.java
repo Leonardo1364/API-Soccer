@@ -16,16 +16,15 @@ public interface TeamServiceResponseMapper {
                 .name(teamResponse.getName())
                 .historicalReputation(teamResponse.getHistoricalReputation())
                 .balance(teamResponse.getBalance())
+                .date(teamResponse.getDate())
                 .build();
     }
-/*
 
-    static TeamServiceResponse toTeamResponse(Team teamResponse) {
+   /* static TeamServiceResponse toTeamResponse(Team teamResponse) {
         return Mappers.getMapper(TeamServiceResponseMapper.class)
                 .mapper(teamResponse);
     }
 
-    TeamServiceResponse mapper(Team teamResponse);
-*/
+    TeamServiceResponse mapper(Team teamResponse);*/
 
 }

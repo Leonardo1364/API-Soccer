@@ -16,15 +16,14 @@ public interface TeamServiceRequestMapper {
                 .name(teamRequest.getName())
                 .historicalReputation(teamRequest.getHistoricalReputation())
                 .balance(teamRequest.getBalance())
+                .date(teamRequest.getDate())
                 .build();
     }
-/*
-    static Team toTeamEntity(TeamServiceRequest teamRequest) {
+    /*static Team toTeamEntity(TeamServiceRequest teamRequest) {
         return Mappers.getMapper(TeamServiceRequestMapper.class)
                 .mapper(teamRequest);
     }
 
-    Team mapper(TeamServiceRequest teamRequest);
-*/
+    Team mapper(TeamServiceRequest teamRequest);*/
 
 }

@@ -1,4 +1,4 @@
-package com.desafios.soccer.model.request;
+package com.desafios.soccer.contract.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,8 +17,7 @@ import javax.validation.constraints.Size;
 public class TeamControllerRequest {
     private String id;
 
-    // U+0020 unicode
-    //@Pattern(regexp = "\0020")
+    //@Pattern(regexp = "")
     @NotBlank
     @Size(min = 3, max = 255, message = "Min 1 and Max 255 characters.")
     private String name;
@@ -29,4 +29,5 @@ public class TeamControllerRequest {
     @DecimalMin("1")
     private Double balance;
 
+    private LocalDate date;
 }

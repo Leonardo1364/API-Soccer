@@ -1,6 +1,6 @@
-package com.desafios.soccer.mapper.request;
+package com.desafios.soccer.contract.mapper.request;
 
-import com.desafios.soccer.model.request.PlayerControllerRequest;
+import com.desafios.soccer.contract.model.request.PlayerControllerRequest;
 import com.desafios.soccer.service.model.request.PlayerServiceRequest;
 
 //@Mapper()
