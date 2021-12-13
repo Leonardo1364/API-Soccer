@@ -4,14 +4,18 @@ import com.desafios.soccer.exceptions.notfound.NotFoundException;
 import com.desafios.soccer.model.entity.Team;
 import com.desafios.soccer.repository.TeamRepository;
 import com.desafios.soccer.service.mapper.response.TeamServiceResponseMapper;
+import com.desafios.soccer.service.model.request.TeamPatchServiceRequest;
 import com.desafios.soccer.service.model.request.TeamServiceRequest;
+import com.desafios.soccer.service.model.response.TeamPatchServiceResponse;
 import com.desafios.soccer.service.model.response.TeamServiceResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.desafios.soccer.service.mapper.request.TeamPatchServiceRequestMapper.toTeamPatchEntity;
 import static com.desafios.soccer.service.mapper.request.TeamServiceRequestMapper.toTeamEntity;
+import static com.desafios.soccer.service.mapper.response.TeamPatchServiceResponseMapper.toTeamPatchResponse;
 import static com.desafios.soccer.service.mapper.response.TeamServiceResponseMapper.toTeamResponse;
 
 @AllArgsConstructor
@@ -33,12 +37,11 @@ public class TeamService {
         return toTeamResponse(teamSave);
     }
 
-    public TeamServiceResponse patchTeam(TeamServiceRequest team, String id) {
-        TeamServiceResponse teamById = findTeamById(id);
+    public TeamPatchServiceResponse patchTeam(TeamPatchServiceRequest team, String id) {
+        Team teamById = teamRepository.findById(id).orElseThrow(() -> new NotFoundException("ID not found"));
         teamById.setName(team.getName());
-        Team teamEntity = toTeamEntity(team);
-        Team teamSave = teamRepository.save(teamEntity);
-        return toTeamResponse(teamSave);
+        Team teamSave = teamRepository.save(teamById);
+        return toTeamPatchResponse(teamSave);
     }
 
     public void deleteTeamById(String id) {
@@ -55,6 +58,12 @@ public class TeamService {
         return teamRepository.findAll().stream()
                 .map(TeamServiceResponseMapper::toTeamResponse)
                 .toList();
+    }
+
+    public TeamPatchServiceResponse findTeamPatch(String id) {
+        Team teamName = teamRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("ID not found"));
+        return toTeamPatchResponse(teamName);
     }
 
 }

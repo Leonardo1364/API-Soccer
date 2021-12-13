@@ -1,4 +1,4 @@
-package com.desafios.soccer.contract.facade.jogador;
+package com.desafios.soccer.contract.facade.player;
 
 import com.desafios.soccer.contract.mapper.response.PlayerControllerResponseMapper;
 import com.desafios.soccer.contract.model.request.PlayerControllerRequest;

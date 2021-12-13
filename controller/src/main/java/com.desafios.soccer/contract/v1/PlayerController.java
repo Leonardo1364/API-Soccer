@@ -1,6 +1,6 @@
 package com.desafios.soccer.contract.v1;
 
-import com.desafios.soccer.contract.facade.jogador.PlayerControllerFacade;
+import com.desafios.soccer.contract.facade.player.PlayerControllerFacade;
 import com.desafios.soccer.contract.model.request.PlayerControllerRequest;
 import com.desafios.soccer.contract.model.response.PlayerControllerResponse;
 import lombok.AllArgsConstructor;

@@ -14,6 +14,8 @@ import javax.validation.constraints.Size;
 @Builder
 public class TeamPatchControllerRequest {
 
+    private String id;
+
     @NotBlank
     @Size(min = 3, max = 255, message = "Min 1 and Max 255 characters.")
     private String name;
