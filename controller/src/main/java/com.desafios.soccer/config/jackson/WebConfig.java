@@ -11,14 +11,11 @@ import java.time.format.DateTimeFormatter;
 @Configuration
 public class WebConfig {
 
-    private static final String dateFormat = "yyyy-MM-dd";
-
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() {
         return builder -> {
-            builder.simpleDateFormat(dateFormat);
-            builder.serializers(new LocalDateSerializer(DateTimeFormatter.ofPattern(dateFormat)));
-            builder.deserializers(new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(dateFormat)));
+            builder.serializers(new LocalDateSerializer(DateTimeFormatter.ISO_LOCAL_DATE));
+            builder.deserializers(new LocalDateTimeDeserializer(DateTimeFormatter.ISO_LOCAL_DATE));
         };
     }
 

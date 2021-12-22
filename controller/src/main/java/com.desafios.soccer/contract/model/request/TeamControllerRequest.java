@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class TeamControllerRequest {
     private String id;
 
-    //@Pattern(regexp = "")
+    //@Pattern(regexp = "&#32")
     @NotBlank
     @Size(min = 3, max = 255, message = "Min 1 and Max 255 characters.")
     private String name;

@@ -1,5 +1,6 @@
 package com.desafios.soccer.exceptions.handler;
 
+import com.desafios.soccer.exceptions.badRequestException.BadRequestException;
 import com.desafios.soccer.exceptions.details.ExceptionDetailsBadRequest;
 import com.desafios.soccer.exceptions.details.ExceptionDetailsNotFound;
 import com.desafios.soccer.exceptions.details.ExceptionMethodNotValidDetails;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.client.HttpClientErrorException.*;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -50,14 +50,14 @@ public class GlobalExceptionHandler {
                 .build();
     }
 
-    @ExceptionHandler(BadRequest.class)
+    @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(BAD_REQUEST)
-    public ExceptionDetailsBadRequest handlerBadRequest(){
+    public ExceptionDetailsBadRequest handlerBadRequest(BadRequestException e){
         return ExceptionDetailsBadRequest.builder()
                 .status(BAD_REQUEST.value())
                 .title("Bad request")
                 .timestamp(Instant.now())
-                .details("Error! Check your request!")
+                .details(e.getMessage())
                 .developerMessage("the server did not understand your request!")
                 .build();
     }

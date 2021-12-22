@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.desafios.soccer.service.mapper.request.TeamPatchServiceRequestMapper.toTeamPatchEntity;
 import static com.desafios.soccer.service.mapper.request.TeamServiceRequestMapper.toTeamEntity;
 import static com.desafios.soccer.service.mapper.response.TeamPatchServiceResponseMapper.toTeamPatchResponse;
 import static com.desafios.soccer.service.mapper.response.TeamServiceResponseMapper.toTeamResponse;
