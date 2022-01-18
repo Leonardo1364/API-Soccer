@@ -1,35 +1,27 @@
 package restTemplate;
 
-import com.desafios.soccer.model.entity.teamResource;
+import com.desafios.soccer.model.entity.League;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Objects;
 
 @AllArgsConstructor
+@Service
 public class ConsumerApi {
 
-    private final RestTemplate template;
+    @Bean
+    public League findLeague(League league) {
+        String uri = "http://localhost:27018/v1/league" + league.getName() + "/json/";
 
-    //https://app.sportdataapi.com/api/v1/soccer/leagues?apikey=d2541920-262e-11ec-ae9c-bdef304d5055&country_id=25
-
-    public void consumingApi(){
-
-        UriComponents uri = UriComponentsBuilder.newInstance()
+        /*UriComponents uri = UriComponentsBuilder.newInstance()
                 .scheme("http")
-                .host("http://apifutebol.footstats.com.br/")
-                .path("/v1/team/3.1/teams/{idTeam}")
-                .queryParam("idTeam", "61c0d131576d367eb199ab25")
-                .queryParam("name", "Grêmio")
-                .queryParam("Stadium", "Arena")
-                .build();
-
-        ResponseEntity<teamResource> entity = template.getForEntity(uri.toString(), teamResource.class);
-
-        System.out.println(Objects.requireNonNull(entity.getBody()).getName());
+                .host("localhost:27018")
+                .path("v1/league")
+                .build();*/
+        RestTemplate rs = new RestTemplate();
+        return rs.getForObject(uri, League.class);
     }
 
 }

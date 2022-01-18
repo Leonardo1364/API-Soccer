@@ -1,5 +1,6 @@
 package com.desafios.soccer.service.model.request;
 
+import com.desafios.soccer.model.entity.League;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -14,5 +15,5 @@ public class TeamServiceRequest {
     private String historicalReputation;
     private Double balance;
     private LocalDate date;
-
+    private League league;
 }

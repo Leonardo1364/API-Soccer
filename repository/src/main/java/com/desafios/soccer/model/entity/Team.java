@@ -25,4 +25,6 @@ public class Team {
     private Double balance;
 
     private LocalDate date;
+
+    private League league;
 }

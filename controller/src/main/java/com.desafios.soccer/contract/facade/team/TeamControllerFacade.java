@@ -9,17 +9,15 @@ import java.util.List;
 
 public interface TeamControllerFacade {
 
-    TeamControllerResponse saveTeam(TeamControllerRequest team);
+    TeamControllerResponse save(TeamControllerRequest team);
 
-    TeamControllerResponse updateTeamById(TeamControllerRequest team, String id);
+    TeamControllerResponse update(TeamControllerRequest team, String id);
 
-    TeamPatchControllerResponse patchTeam(TeamPatchControllerRequest team, String id);
+    TeamPatchControllerResponse patch(TeamPatchControllerRequest team, String id);
 
-    void deleteTeamById(String id);
+    void delete(String id);
 
-    TeamControllerResponse findTeamById(String id);
+    TeamControllerResponse find(String id);
 
-    TeamPatchControllerResponse findTeamPatch(String id);
-
-    List<TeamControllerResponse> findAllTeams();
+    List<TeamControllerResponse> findAll();
 }

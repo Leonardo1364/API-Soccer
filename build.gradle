@@ -5,7 +5,7 @@ plugins {
 	id 'java'
 }
 
-mainClassName = 'com.desafios.soccer'
+mainClassName = "com.desafios.soccer"
 
 dependencies {
 	implementation project(":controller")
@@ -30,7 +30,6 @@ allprojects {
 		implementation 'org.mapstruct:mapstruct:1.4.2.Final'
 		implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.5.5'
 		compileOnly 'org.projectlombok:lombok:1.18.22'
-		runtimeOnly 'com.h2database:h2:2.0.202'
 		annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 		annotationProcessor 'org.projectlombok:lombok:1.18.22'
 		testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.6'

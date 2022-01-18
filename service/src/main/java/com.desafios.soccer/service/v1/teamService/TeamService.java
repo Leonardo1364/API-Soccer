@@ -23,43 +23,43 @@ public class TeamService {
 
     private final TeamRepository teamRepository;
 
-    public TeamServiceResponse saveTeam(TeamServiceRequest team) {
+    public TeamServiceResponse save(TeamServiceRequest team) {
         Team teamSave = toTeamEntity(team);
         Team teamResponse = teamRepository.save(teamSave);
         return toTeamResponse(teamResponse);
     }
 
-    public TeamServiceResponse updateTeamById(TeamServiceRequest team, String id) {
+    public TeamServiceResponse update(TeamServiceRequest team, String id) {
         team.setId(id);
         Team teamEntity = toTeamEntity(team);
         Team teamSave = teamRepository.save(teamEntity);
         return toTeamResponse(teamSave);
     }
 
-    public TeamPatchServiceResponse patchTeam(TeamPatchServiceRequest team, String id) {
+    public TeamPatchServiceResponse patch(TeamPatchServiceRequest team, String id) {
         Team teamById = teamRepository.findById(id).orElseThrow(() -> new NotFoundException("ID not found"));
         teamById.setName(team.getName());
         Team teamSave = teamRepository.save(teamById);
         return toTeamPatchResponse(teamSave);
     }
 
-    public void deleteTeamById(String id) {
+    public void delete(String id) {
         teamRepository.deleteById(id);
     }
 
-    public TeamServiceResponse findTeamById(String id) {
+    public TeamServiceResponse find(String id) {
         Team teamName = teamRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("ID not found"));
         return toTeamResponse(teamName);
     }
 
-    public List<TeamServiceResponse> findAllTeams() {
+    public List<TeamServiceResponse> findAll() {
         return teamRepository.findAll().stream()
                 .map(TeamServiceResponseMapper::toTeamResponse)
                 .toList();
     }
 
-    public TeamPatchServiceResponse findTeamPatch(String id) {
+    public TeamPatchServiceResponse findPatch(String id) {
         Team teamName = teamRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("ID not found"));
         return toTeamPatchResponse(teamName);

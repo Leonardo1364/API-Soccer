@@ -26,41 +26,35 @@ public class TeamControllerFacadeImpl implements TeamControllerFacade {
 
     private final TeamService facade;
 
-    public TeamControllerResponse saveTeam(TeamControllerRequest team) {
+    public TeamControllerResponse save(TeamControllerRequest team) {
         TeamServiceRequest teamSave = toTeamService(team);
-        TeamServiceResponse teamResponse = facade.saveTeam(teamSave);
+        TeamServiceResponse teamResponse = facade.save(teamSave);
         return toTeamResponseController(teamResponse);
     }
 
-    public TeamControllerResponse updateTeamById(TeamControllerRequest team, String id) {
+    public TeamControllerResponse update(TeamControllerRequest team, String id) {
         TeamServiceRequest teamSave = toTeamService(team);
-        TeamServiceResponse teamResponse = facade.updateTeamById(teamSave, id);
+        TeamServiceResponse teamResponse = facade.update(teamSave, id);
         return toTeamResponseController(teamResponse);
     }
 
-    public TeamPatchControllerResponse patchTeam(TeamPatchControllerRequest team, String id) {
+    public TeamPatchControllerResponse patch(TeamPatchControllerRequest team, String id) {
         TeamPatchServiceRequest teamSave = toTeamPatchService(team);
-        TeamPatchServiceResponse teamResponse = facade.patchTeam(teamSave, id);
+        TeamPatchServiceResponse teamResponse = facade.patch(teamSave, id);
         return toTeamResponseControllerPatch(teamResponse);
     }
 
-    public void deleteTeamById(String id) {
-        facade.deleteTeamById(id);
+    public void delete(String id) {
+        facade.delete(id);
     }
 
-    public TeamControllerResponse findTeamById(String id) {
-        TeamServiceResponse teamController = facade.findTeamById(id);
+    public TeamControllerResponse find(String id) {
+        TeamServiceResponse teamController = facade.find(id);
         return toTeamResponseController(teamController);
     }
 
-    @Override
-    public TeamPatchControllerResponse findTeamPatch(String id) {
-        TeamPatchServiceResponse teamPatchController = facade.findTeamPatch(id);
-        return toTeamResponseControllerPatch(teamPatchController);
-    }
-
-    public List<TeamControllerResponse> findAllTeams() {
-        return facade.findAllTeams().stream()
+    public List<TeamControllerResponse> findAll() {
+        return facade.findAll().stream()
                 .map(TeamControllerResponseMapper::toTeamResponseController)
                 .toList();
     }
