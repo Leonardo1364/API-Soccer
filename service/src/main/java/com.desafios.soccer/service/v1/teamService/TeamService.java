@@ -24,15 +24,12 @@ public class TeamService {
     private final TeamRepository teamRepository;
 
     public TeamServiceResponse save(TeamServiceRequest team) {
-        Team teamSave = toTeamEntity(team);
-        Team teamResponse = teamRepository.save(teamSave);
+        Team teamResponse = teamRepository.save(toTeamEntity(team));
         return toTeamResponse(teamResponse);
     }
 
-    public TeamServiceResponse update(TeamServiceRequest team, String id) {
-        team.setId(id);
-        Team teamEntity = toTeamEntity(team);
-        Team teamSave = teamRepository.save(teamEntity);
+    public TeamServiceResponse update(TeamServiceRequest team) {
+        Team teamSave = teamRepository.save(toTeamEntity(team));
         return toTeamResponse(teamSave);
     }
 

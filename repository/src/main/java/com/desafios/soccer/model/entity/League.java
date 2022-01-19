@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class League {
 
-    private String id;
+    private Long id;
     private String name;
     private String country;
 

@@ -1,4 +1,4 @@
-package com.desafios.soccer.service.mapper.request;
+package com.desafios.soccer.service.mapper.teamWithLeague;
 
 import com.desafios.soccer.model.entity.League;
 import com.desafios.soccer.model.entity.Team;
@@ -10,19 +10,6 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface TeamMappertoLeague {
-
-    /*static TeamServiceRequest leagueToServiceResponse(TeamServiceRequest team, League id) {
-        if ( team == null && id == null ) {
-            return null;
-        }
-
-        return TeamServiceRequest.builder()
-                .id(Objects.requireNonNull(team).getLeague().getId())
-                .name(team.getLeague().getName())
-                .build();
-
-
-    }*/
 
     static TeamServiceRequest mapLeague(TeamServiceRequest team, League id) {
         return Mappers.getMapper(TeamMappertoLeague.class)
@@ -40,4 +27,16 @@ public interface TeamMappertoLeague {
                 .build();
     }
 
+    /*static TeamServiceRequest leagueToServiceResponse(TeamServiceRequest team, League id) {
+        if ( team == null && id == null ) {
+            return null;
+        }
+
+        return TeamServiceRequest.builder()
+                .id(Objects.requireNonNull(team).getLeague().getId())
+                .name(team.getLeague().getName())
+                .build();
+
+
+    }*/
 }
