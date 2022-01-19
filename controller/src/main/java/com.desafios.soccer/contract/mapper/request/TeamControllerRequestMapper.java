@@ -6,13 +6,26 @@ import com.desafios.soccer.service.model.request.TeamServiceRequest;
 //@Mapper()
 public interface TeamControllerRequestMapper {
 
-    static TeamServiceRequest toTeamService(TeamControllerRequest teamRequest) {
+    static TeamServiceRequest toTeamServiceWithId(TeamControllerRequest teamRequest, String id) {
+        if (teamRequest == null && id == null) {
+            return null;
+        }
+
+        return TeamServiceRequest.builder()
+                .id(id)
+                .name(teamRequest.getName())
+                .historicalReputation(teamRequest.getHistoricalReputation())
+                .balance(teamRequest.getBalance())
+                .date(teamRequest.getDate())
+                .build();
+    }
+
+    static TeamServiceRequest toTeamServiceWithoutId(TeamControllerRequest teamRequest) {
         if (teamRequest == null) {
             return null;
         }
 
         return TeamServiceRequest.builder()
-                .id(teamRequest.getId())
                 .name(teamRequest.getName())
                 .historicalReputation(teamRequest.getHistoricalReputation())
                 .balance(teamRequest.getBalance())
