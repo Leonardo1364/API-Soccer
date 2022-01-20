@@ -57,8 +57,8 @@ public class TeamController {
 
     @GetMapping("/{id}")
     @ResponseStatus(OK)
-    public TeamControllerResponse find(@PathVariable String id) {
-        return facade.find(id);
+    public TeamControllerResponse findById(@PathVariable String id) {
+        return facade.findById(id);
     }
 
     @GetMapping

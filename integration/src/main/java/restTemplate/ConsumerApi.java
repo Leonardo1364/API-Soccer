@@ -15,7 +15,7 @@ public class ConsumerApi {
     private RestTemplate restTemplate;
 
     @Bean
-    public League findLeague(League league) {
+    public League find(League league) {
         String uri = "http://localhost:8081/v1/league" + league.getName() + "/json/";
         return restTemplate.getForObject(uri, League.class);
     }

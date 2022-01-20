@@ -6,7 +6,7 @@ import com.desafios.soccer.service.model.request.TeamServiceRequest;
 //@Mapper
 public interface TeamServiceRequestMapper {
 
-    static Team toTeamEntity(TeamServiceRequest teamRequest) {
+    static Team toEntity(TeamServiceRequest teamRequest) {
         if (teamRequest == null) {
             return null;
         }

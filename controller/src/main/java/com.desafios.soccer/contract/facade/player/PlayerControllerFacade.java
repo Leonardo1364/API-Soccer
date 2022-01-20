@@ -7,14 +7,14 @@ import java.util.List;
 
 public interface PlayerControllerFacade {
 
-    PlayerControllerResponse savePlayer(PlayerControllerRequest player);
+    PlayerControllerResponse save(PlayerControllerRequest player);
 
-    PlayerControllerResponse updatePlayerById(PlayerControllerRequest player, String id);
+    PlayerControllerResponse update(PlayerControllerRequest player, String id);
 
-    void deletePlayerById(String id);
+    void delete(String id);
 
-    PlayerControllerResponse findPlayerById(String id);
+    PlayerControllerResponse findById(String id);
 
-    List<PlayerControllerResponse> findAllPlayer();
+    List<PlayerControllerResponse> findAll();
 
 }

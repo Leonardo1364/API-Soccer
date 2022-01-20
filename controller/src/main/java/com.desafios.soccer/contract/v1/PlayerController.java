@@ -21,33 +21,33 @@ public class PlayerController {
 
     @PostMapping()
     @ResponseStatus(CREATED)
-    public PlayerControllerResponse savePlayer(@RequestBody @Valid PlayerControllerRequest player) {
-        return facade.savePlayer(player);
+    public PlayerControllerResponse save(@RequestBody @Valid PlayerControllerRequest player) {
+        return facade.save(player);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
-    public PlayerControllerResponse updatePlayerById(@RequestBody @Valid PlayerControllerRequest player,
-                                                     @PathVariable String id) {
-        return facade.updatePlayerById(player, id);
+    public PlayerControllerResponse update(@RequestBody @Valid PlayerControllerRequest player,
+                                           @PathVariable String id) {
+        return facade.update(player, id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
-    public void deletePlayerById(@PathVariable String id) {
-        facade.deletePlayerById(id);
+    public void delete(@PathVariable String id) {
+        facade.delete(id);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(OK)
-    public PlayerControllerResponse findPlayerById(@PathVariable String id) {
-        return facade.findPlayerById(id);
+    public PlayerControllerResponse findById(@PathVariable String id) {
+        return facade.findById(id);
     }
 
     @GetMapping
     @ResponseStatus(OK)
-    public List<PlayerControllerResponse> findAllPlayers() {
-        return facade.findAllPlayer();
+    public List<PlayerControllerResponse> findAll() {
+        return facade.findAll();
     }
 
 }

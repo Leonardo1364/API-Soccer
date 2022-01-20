@@ -11,41 +11,36 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.desafios.soccer.service.mapper.request.PlayerServiceRequestMapper.toPlayerEntity;
-import static com.desafios.soccer.service.mapper.response.PlayerServiceResponseMapper.toPlayerResponse;
+import static com.desafios.soccer.service.mapper.request.PlayerServiceRequestMapper.toEntity;
+import static com.desafios.soccer.service.mapper.response.PlayerServiceResponseMapper.toResponse;
 
 @AllArgsConstructor
 @Service
-public class PlayerService {
+public record PlayerService(PlayerRepository playerRepository) {
 
-    private final PlayerRepository playerRepository;
-
-    public PlayerServiceResponse savePlayer(PlayerServiceRequest player) {
-        Player playerSave = toPlayerEntity(player);
-        Player playerResponse = playerRepository.save(playerSave);
-        return toPlayerResponse(playerResponse);
+    public PlayerServiceResponse save(PlayerServiceRequest player) {
+        Player playerResponse = playerRepository.save(toEntity(player));
+        return toResponse(playerResponse);
     }
 
-    public PlayerServiceResponse updatePlayerById(PlayerServiceRequest player, String id) {
-        player.setId(id);
-        Player playerEntity = toPlayerEntity(player);
-        Player playerSave = playerRepository.save(playerEntity);
-        return toPlayerResponse(playerSave);
+    public PlayerServiceResponse update(PlayerServiceRequest player) {
+        Player playerSave = playerRepository.save(toEntity(player));
+        return toResponse(playerSave);
     }
 
     public void deletePlayerById(String id) {
         playerRepository.deleteById(id);
     }
 
-    public PlayerServiceResponse findPlayerById(String id) {
+    public PlayerServiceResponse findById(String id) {
         Player player = playerRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("ID not found"));
-        return toPlayerResponse(player);
+        return toResponse(player);
     }
 
-    public List<PlayerServiceResponse> findAllPlayers() {
+    public List<PlayerServiceResponse> findAll() {
         return playerRepository.findAll().stream()
-                .map(PlayerServiceResponseMapper::toPlayerResponse)
+                .map(PlayerServiceResponseMapper::toResponse)
                 .toList();
     }
 }

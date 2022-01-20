@@ -6,7 +6,7 @@ import com.desafios.soccer.service.model.response.PlayerServiceResponse;
 //@Mapper
 public interface PlayerServiceResponseMapper {
 
-    static PlayerServiceResponse toPlayerResponse(Player playerResponse) {
+    static PlayerServiceResponse toResponse(Player playerResponse) {
         if (playerResponse == null) {
             return null;
         }

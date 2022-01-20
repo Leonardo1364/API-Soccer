@@ -5,7 +5,7 @@ import com.desafios.soccer.service.model.request.PlayerServiceRequest;
 
 //@Mapper
 public interface PlayerServiceRequestMapper {
-    static Player toPlayerEntity(PlayerServiceRequest playerRequest) {
+    static Player toEntity(PlayerServiceRequest playerRequest) {
         if (playerRequest == null) {
             return null;
         }

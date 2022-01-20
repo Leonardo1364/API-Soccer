@@ -5,7 +5,7 @@ import com.desafios.soccer.service.model.request.TeamPatchServiceRequest;
 
 public interface TeamPatchServiceRequestMapper {
 
-    static Team toTeamPatchEntity(TeamPatchServiceRequest teamRequest) {
+    static Team toPatchEntity(TeamPatchServiceRequest teamRequest) {
         if (teamRequest == null) {
             return null;
         }

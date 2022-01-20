@@ -5,7 +5,7 @@ import com.desafios.soccer.service.model.response.TeamPatchServiceResponse;
 
 public interface TeamPatchControllerResponseMapper {
 
-    static TeamPatchControllerResponse toTeamResponseControllerPatch(TeamPatchServiceResponse teamPatch) {
+    static TeamPatchControllerResponse toResponseControllerPatch(TeamPatchServiceResponse teamPatch) {
         if (teamPatch == null)
             return null;
 

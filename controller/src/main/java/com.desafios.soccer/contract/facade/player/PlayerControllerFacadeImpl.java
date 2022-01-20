@@ -3,7 +3,6 @@ package com.desafios.soccer.contract.facade.player;
 import com.desafios.soccer.contract.mapper.response.PlayerControllerResponseMapper;
 import com.desafios.soccer.contract.model.request.PlayerControllerRequest;
 import com.desafios.soccer.contract.model.response.PlayerControllerResponse;
-import com.desafios.soccer.service.model.request.PlayerServiceRequest;
 import com.desafios.soccer.service.model.response.PlayerServiceResponse;
 import com.desafios.soccer.service.v1.playerService.PlayerFacade;
 import lombok.AllArgsConstructor;
@@ -11,8 +10,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-import static com.desafios.soccer.contract.mapper.request.PlayerControllerRequestMapper.toPlayerService;
-import static com.desafios.soccer.contract.mapper.response.PlayerControllerResponseMapper.toPlayerResponseController;
+import static com.desafios.soccer.contract.mapper.request.PlayerControllerRequestMapper.toServiceWithId;
+import static com.desafios.soccer.contract.mapper.request.PlayerControllerRequestMapper.toServiceWithoutId;
+import static com.desafios.soccer.contract.mapper.response.PlayerControllerResponseMapper.toResponseController;
 
 @AllArgsConstructor
 @Component
@@ -20,30 +20,28 @@ public class PlayerControllerFacadeImpl implements PlayerControllerFacade {
 
     private final PlayerFacade facade;
 
-    public PlayerControllerResponse savePlayer(PlayerControllerRequest player) {
-        PlayerServiceRequest playerSave = toPlayerService(player);
-        PlayerServiceResponse playerResponse = facade.savePlayer(playerSave);
-        return toPlayerResponseController(playerResponse);
+    public PlayerControllerResponse save(PlayerControllerRequest player) {
+        PlayerServiceResponse playerResponse = facade.save(toServiceWithoutId(player));
+        return toResponseController(playerResponse);
     }
 
-    public PlayerControllerResponse updatePlayerById(PlayerControllerRequest player, String id) {
-        PlayerServiceRequest playerSave = toPlayerService(player);
-        PlayerServiceResponse playerResponse = facade.updatePlayerById(playerSave, id);
-        return toPlayerResponseController(playerResponse);
+    public PlayerControllerResponse update(PlayerControllerRequest player, String id) {
+        PlayerServiceResponse playerResponse = facade.updateById(toServiceWithId(player, id));
+        return toResponseController(playerResponse);
     }
 
-    public void deletePlayerById(String id) {
-        facade.deletePlayerById(id);
+    public void delete(String id) {
+        facade.delete(id);
     }
 
-    public PlayerControllerResponse findPlayerById(String id) {
-        PlayerServiceResponse playerController = facade.findPlayerById(id);
-        return toPlayerResponseController(playerController);
+    public PlayerControllerResponse findById(String id) {
+        PlayerServiceResponse playerController = facade.findById(id);
+        return toResponseController(playerController);
     }
 
-    public List<PlayerControllerResponse> findAllPlayer() {
-        return facade.findAllPlayers().stream()
-                .map(PlayerControllerResponseMapper::toPlayerResponseController)
+    public List<PlayerControllerResponse> findAll() {
+        return facade.findAll().stream()
+                .map(PlayerControllerResponseMapper::toResponseController)
                 .toList();
     }
 

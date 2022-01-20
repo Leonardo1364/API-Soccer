@@ -17,7 +17,7 @@ public interface TeamControllerFacade {
 
     void delete(String id);
 
-    TeamControllerResponse find(String id);
+    TeamControllerResponse findById(String id);
 
     List<TeamControllerResponse> findAll();
 }

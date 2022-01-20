@@ -13,27 +13,26 @@ public class PlayerFacade {
 
     private PlayerService playerService;
 
-    public PlayerServiceResponse savePlayer(PlayerServiceRequest player) {
-        return playerService.savePlayer(player);
+    public PlayerServiceResponse save(PlayerServiceRequest player) {
+        return playerService.save(player);
     }
 
-    public PlayerServiceResponse updatePlayerById(PlayerServiceRequest player, String id) {
-        PlayerServiceResponse playerById = playerService.findPlayerById(id);
-        return playerService.updatePlayerById(player, playerById.getId());
+    public PlayerServiceResponse updateById(PlayerServiceRequest player) {
+        return playerService.update(player);
     }
 
-    public void deletePlayerById(String id) {
-        playerService.findPlayerById(id);
+    public void delete(String id) {
+        playerService.findById(id);
         playerService.deletePlayerById(id);
     }
 
-    public PlayerServiceResponse findPlayerById(String id) {
-        playerService.findPlayerById(id);
-        return playerService.findPlayerById(id);
+    public PlayerServiceResponse findById(String id) {
+        playerService.findById(id);
+        return playerService.findById(id);
     }
 
-    public List<PlayerServiceResponse> findAllPlayers() {
-        return playerService.findAllPlayers();
+    public List<PlayerServiceResponse> findAll() {
+        return playerService.findAll();
     }
 
 }

@@ -6,7 +6,23 @@ import com.desafios.soccer.service.model.request.PlayerServiceRequest;
 //@Mapper()
 public interface PlayerControllerRequestMapper {
 
-    static PlayerServiceRequest toPlayerService(PlayerControllerRequest playerRequest) {
+    static PlayerServiceRequest toServiceWithId(PlayerControllerRequest playerRequest, String id) {
+        if (playerRequest == null && id == null) {
+            return null;
+        }
+
+        return PlayerServiceRequest.builder()
+                .id(playerRequest.getId())
+                .name(playerRequest.getName())
+                .age(playerRequest.getAge())
+                .currentTeam(playerRequest.getCurrentTeam())
+                .historicalReputation(playerRequest.getHistoricalReputation())
+                .financialAppetite(playerRequest.getFinancialAppetite())
+                .price(playerRequest.getPrice())
+                .build();
+    }
+
+    static PlayerServiceRequest toServiceWithoutId(PlayerControllerRequest playerRequest) {
         if (playerRequest == null) {
             return null;
         }

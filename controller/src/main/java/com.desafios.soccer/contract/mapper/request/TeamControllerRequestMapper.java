@@ -6,7 +6,7 @@ import com.desafios.soccer.service.model.request.TeamServiceRequest;
 //@Mapper()
 public interface TeamControllerRequestMapper {
 
-    static TeamServiceRequest toTeamServiceWithId(TeamControllerRequest teamRequest, String id) {
+    static TeamServiceRequest toServiceWithId(TeamControllerRequest teamRequest, String id) {
         if (teamRequest == null && id == null) {
             return null;
         }
@@ -20,7 +20,7 @@ public interface TeamControllerRequestMapper {
                 .build();
     }
 
-    static TeamServiceRequest toTeamServiceWithoutId(TeamControllerRequest teamRequest) {
+    static TeamServiceRequest toServiceWithoutId(TeamControllerRequest teamRequest) {
         if (teamRequest == null) {
             return null;
         }

@@ -12,8 +12,8 @@ import restTemplate.ConsumerApi;
 
 import java.util.List;
 
-
 @AllArgsConstructor
+@NoArgsConstructor
 @Component
 public class TeamFacade {
 
@@ -21,7 +21,7 @@ public class TeamFacade {
     private ConsumerApi consumerApi;
 
     public TeamServiceResponse save(TeamServiceRequest team) {
-        return teamService.save(TeamMappertoLeague.mapLeague(team, consumerApi.findLeague(team.getLeague())));
+        return teamService.save(TeamMappertoLeague.mapLeague(team, consumerApi.find(team.getLeague())));
     }
 
     public TeamServiceResponse update(TeamServiceRequest team) {
@@ -34,13 +34,13 @@ public class TeamFacade {
     }
 
     public void delete(String id) {
-        teamService.find(id);
+        teamService.findById(id);
         teamService.delete(id);
     }
 
-    public TeamServiceResponse find(String id) {
-        teamService.find(id);
-        return teamService.find(id);
+    public TeamServiceResponse findById(String id) {
+        teamService.findById(id);
+        return teamService.findById(id);
     }
 
     public List<TeamServiceResponse> findAll() {
