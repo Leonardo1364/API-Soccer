@@ -14,9 +14,9 @@ public class ConsumerApi {
     private RestTemplate restTemplate;
 
     public LeagueIntegration find(Long leagueId) {
-        UriComponents uri = UriComponentsBuilder.newInstance()
+        UriComponents baseUri = UriComponentsBuilder.newInstance()
                 .path("/v1/league/".concat(leagueId.toString()))
                 .build();
-        return restTemplate.getForObject(uri.toUri(), LeagueIntegration.class);
+        return restTemplate.getForObject(baseUri.toUri(), LeagueIntegration.class);
     }
 }

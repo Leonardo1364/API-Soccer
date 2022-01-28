@@ -1,28 +1,22 @@
 package com.soccer.restTemplateConfig;
 
 import lombok.AllArgsConstructor;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.DefaultUriBuilderFactory;
 
 @AllArgsConstructor
 @Configuration
 public class RestTemplateConfig {
 
-    private static RestTemplate restTemplate;
-
     @Bean
     public static RestTemplate restTemplate() {
-        if (restTemplate == null) {
-            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-            HttpComponentsClientHttpRequestFactory httpRequestFactory =
-                    new HttpComponentsClientHttpRequestFactory(httpClient);
-            httpRequestFactory.setConnectTimeout(3000);
-            restTemplate = new RestTemplate(httpRequestFactory);
-        }
+
+        String baseUri = "http://localhost:8081";
+        DefaultUriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(baseUri);
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setUriTemplateHandler(uriBuilderFactory);
         return restTemplate;
     }
 

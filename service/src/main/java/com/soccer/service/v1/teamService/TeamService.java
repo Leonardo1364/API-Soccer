@@ -11,6 +11,7 @@ import com.soccer.service.model.response.TeamPatchServiceResponse;
 import com.soccer.service.model.response.TeamServiceResponse;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,8 @@ import static com.soccer.service.mapper.response.TeamServiceResponseMapper.toRes
 @NoArgsConstructor
 @Service
 public class TeamService {
+
+    private static final String OBJECT_NOT_FOUND = "ID not found";
 
     private TeamRepository teamRepository;
     private ConsumerApi consumerApi;
@@ -42,7 +45,7 @@ public class TeamService {
 
     public TeamPatchServiceResponse patch(TeamPatchServiceRequest team, String id) {
         TeamEntity teamById = teamRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("ID not found"));
+                .orElseThrow(() -> new NotFoundException(OBJECT_NOT_FOUND));
         teamById.setName(team.getName());
         TeamEntity teamSave = teamRepository.save(teamById);
         return toPatchResponse(teamSave);
@@ -54,7 +57,7 @@ public class TeamService {
 
     public TeamServiceResponse findById(String id) {
         TeamEntity teamName = teamRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("ID not found"));
+                .orElseThrow(() -> new NotFoundException(OBJECT_NOT_FOUND));
         return toResponse(teamName);
     }
 
@@ -66,7 +69,7 @@ public class TeamService {
 
     public TeamPatchServiceResponse findPatch(String id) {
         TeamEntity teamName = teamRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("ID not found"));
+                .orElseThrow(() -> new NotFoundException(OBJECT_NOT_FOUND));
         return toPatchResponse(teamName);
     }
 

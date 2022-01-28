@@ -8,17 +8,19 @@ import com.soccer.service.model.response.TeamServiceResponse;
 import java.util.Optional;
 
 public class TeamControllerResponseMapper {
+
    public static TeamControllerResponse toResponseController(TeamServiceResponse teamServiceResponse) {
 
         return Optional.ofNullable(teamServiceResponse)
                 .map(teamServiceResponse1 -> TeamControllerResponse.builder()
-                .id(teamServiceResponse.getId())
-                .name(teamServiceResponse.getName())
-                .historicalReputation(teamServiceResponse.getHistoricalReputation())
-                .balance(teamServiceResponse.getBalance())
-                .date(teamServiceResponse.getDate())
-                .league(toLeagueResponseController(teamServiceResponse.getLeague()))
-                .build()).orElse(null);
+                    .id(teamServiceResponse.getId())
+                    .name(teamServiceResponse.getName())
+                    .historicalReputation(teamServiceResponse.getHistoricalReputation())
+                    .balance(teamServiceResponse.getBalance())
+                    .date(teamServiceResponse.getDate())
+                    .league(toLeagueResponseController(teamServiceResponse.getLeague()))
+                    .build())
+                .orElse(null);
     }
 
     public static LeagueControllerResponse toLeagueResponseController(LeagueServiceResponse leagueServiceResponse) {
@@ -28,7 +30,8 @@ public class TeamControllerResponseMapper {
                        .id(leagueServiceResponse.getId())
                        .name(leagueServiceResponse.getName())
                        .country(leagueServiceResponse.getCountry())
-                       .build()).orElse(null);
+                       .build())
+               .orElse(null);
     }
 
 }

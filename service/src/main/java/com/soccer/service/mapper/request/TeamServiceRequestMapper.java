@@ -23,7 +23,7 @@ public class TeamServiceRequestMapper {
 
     public static LeagueEntity toLeagueEntity(LeagueIntegration leagueIntegration) {
         return Optional.ofNullable(leagueIntegration)
-                .map(leagueIntegration1 -> LeagueEntity.builder()
+                .map(league -> LeagueEntity.builder()
                         .id(leagueIntegration.getId())
                         .name(leagueIntegration.getName())
                         .country(leagueIntegration.getCountry())

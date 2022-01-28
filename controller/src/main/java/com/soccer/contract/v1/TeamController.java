@@ -27,49 +27,49 @@ import static org.springframework.http.HttpStatus.*;
 @RequestMapping("/v1/team")
 public class TeamController {
 
-    private final TeamControllerFacade facade;
+    private final TeamControllerFacade controllerFacade;
 
     @PostMapping
     @ResponseStatus(CREATED)
     public TeamControllerResponse save(@RequestBody @Valid TeamControllerRequest team) {
-        return facade.save(team);
+        return controllerFacade.save(team);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(OK)
     public TeamControllerResponse update(@RequestBody @Valid TeamControllerRequest team,
                                          @PathVariable String id) {
-        return facade.update(team, id);
+        return controllerFacade.update(team, id);
     }
 
     @PatchMapping("/{id}")
     @ResponseStatus(OK)
     public TeamPatchControllerResponse patch(@RequestBody @Valid TeamPatchControllerRequest team,
                                              @PathVariable String id) {
-        return facade.patch(team, id);
+        return controllerFacade.patch(team, id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
     public void delete(@PathVariable String id) {
-        facade.delete(id);
+        controllerFacade.delete(id);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(OK)
     public TeamControllerResponse findById(@PathVariable String id) {
-        return facade.findById(id);
+        return controllerFacade.findById(id);
     }
 
     @GetMapping
     @ResponseStatus(OK)
     public List<TeamControllerResponse> findAll() {
-        return facade.findAll();
+        return controllerFacade.findAll();
     }
 
     @GetMapping("/read-cookie")
     public String readCookie(
-            @CookieValue(name = "team_id", defaultValue = "default-team-id") String teamId) {
+            @CookieValue(name = "team", defaultValue = "default") String teamId) {
 
         return teamId;
     }
@@ -77,18 +77,19 @@ public class TeamController {
     @GetMapping("/all-cookies")
     public String readAllCookies(@NotNull HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
+        request.getHeader("team");
 
         if (cookies != null) {
             return Arrays.stream(cookies)
                     .map(cookie -> cookie.getName() + " = " + cookie.getValue())
                     .collect(Collectors.joining(", "));
         }
-        return "No cookies";
+        return "team";
     }
 
     @PostMapping("/change-cookies")
     public String setCookie(@NotNull HttpServletResponse response) {
-        Cookie cookie = new Cookie("team-id", "Time");
+        Cookie cookie = new Cookie("team", "Grêmio");
 
         cookie.setHttpOnly(true); // informa ao navegador que este cookie é acessado apenas pelo servidor
         cookie.setSecure(true); // transmissão somente por criptografia
@@ -98,17 +99,19 @@ public class TeamController {
 
         response.addCookie(cookie);
 
-        return "Team name is changed!";
+        return "Team name is changed";
     }
 
     @PostMapping("/headers")
     @ResponseStatus(OK)
     public ResponseEntity<Map<String, String>> setHeader(@RequestHeader(value = "Accept") String acceptHeader,
-                                                          @RequestHeader(value = "Authorization") String authorization) {
+                                                          @RequestHeader(value = "Authorization") String authorization,
+                                                         @RequestHeader(value = "Set-Cookie") String cookie) {
 
         Map<String, String> returnValue = new HashMap<>();
             returnValue.put("Accept", acceptHeader);
             returnValue.put("Authorization", authorization);
+            returnValue.put("Set-Cookie", cookie);
 
         return ResponseEntity.status(OK).body(returnValue);
     }

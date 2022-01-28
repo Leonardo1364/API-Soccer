@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -29,7 +30,9 @@ public class TeamControllerRequest {
     @DecimalMin("1")
     private Double balance;
 
+    @NotNull(message = "The team's opening year must be filled in.")
     private LocalDate date;
 
+    @NotNull
     private Long leagueId;
 }
