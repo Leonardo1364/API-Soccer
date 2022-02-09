@@ -1,4 +1,4 @@
-package com.soccer.service.v1.playerService;
+package com.soccer.service.v1.playerservice;
 
 import com.soccer.exceptions.notfound.NotFoundException;
 import com.soccer.model.entity.PlayerEntity;

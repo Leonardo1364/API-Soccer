@@ -3,15 +3,17 @@ package com.soccer.contract.mapper.response;
 import com.soccer.contract.model.response.TeamPatchControllerResponse;
 import com.soccer.service.model.response.TeamPatchServiceResponse;
 
-public interface TeamPatchControllerResponseMapper {
+import java.util.Optional;
 
-    static TeamPatchControllerResponse toResponseControllerPatch(TeamPatchServiceResponse teamPatch) {
-        if (teamPatch == null)
-            return null;
+public class TeamPatchControllerResponseMapper {
 
-        return TeamPatchControllerResponse.builder()
-                .id(teamPatch.getId())
-                .name(teamPatch.getName())
-                .build();
+    public static TeamPatchControllerResponse toResponseControllerPatch(TeamPatchServiceResponse teamPatch) {
+
+        return Optional.ofNullable(teamPatch)
+                .map(teamPatchServiceResponse -> TeamPatchControllerResponse.builder()
+                    .id(teamPatch.getId())
+                    .name(teamPatch.getName())
+                    .build())
+                .orElse(null);
     }
 }

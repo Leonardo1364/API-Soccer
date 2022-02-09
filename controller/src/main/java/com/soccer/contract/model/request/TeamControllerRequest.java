@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @Builder
 @Data
 public class TeamControllerRequest {
+
     private String id;
 
     //@Pattern(regexp = "&#32")
@@ -30,9 +31,9 @@ public class TeamControllerRequest {
     @DecimalMin("1")
     private Double balance;
 
-    @NotNull(message = "The team's opening year must be filled in.")
+//    @NotNull(message = "The team's opening year must be filled in.")
     private LocalDate date;
 
-    @NotNull
+//    @NotNull
     private Long leagueId;
 }

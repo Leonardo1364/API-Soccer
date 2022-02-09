@@ -7,7 +7,7 @@ import com.soccer.contract.model.response.TeamControllerResponse;
 import com.soccer.contract.model.response.TeamPatchControllerResponse;
 import com.soccer.service.model.response.TeamPatchServiceResponse;
 import com.soccer.service.model.response.TeamServiceResponse;
-import com.soccer.service.v1.teamService.TeamService;
+import com.soccer.service.v1.teamservice.TeamService;
 import com.soccer.contract.mapper.response.TeamPatchControllerResponseMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ import java.util.List;
 
 import static com.soccer.contract.mapper.request.TeamControllerRequestMapper.toServiceWithId;
 import static com.soccer.contract.mapper.request.TeamControllerRequestMapper.toServiceWithoutId;
-import static com.soccer.contract.mapper.request.TeamPatchControllerRequestMapper.toPatchService;
+import static com.soccer.contract.mapper.request.TeamPatchControllerRequestMapper.toPatchServiceWithId;
 import static com.soccer.contract.mapper.response.TeamControllerResponseMapper.toResponseController;
 
 @AllArgsConstructor
@@ -36,7 +36,7 @@ public class TeamControllerFacadeImpl implements TeamControllerFacade {
     }
 
     public TeamPatchControllerResponse patch(TeamPatchControllerRequest team, String id) {
-        TeamPatchServiceResponse teamResponse = service.patch(toPatchService(team), id);
+        TeamPatchServiceResponse teamResponse = service.patch(toPatchServiceWithId(team, id));
         return TeamPatchControllerResponseMapper.toResponseControllerPatch(teamResponse);
     }
 

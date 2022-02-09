@@ -3,30 +3,23 @@ package com.soccer.service.mapper.response;
 import com.soccer.model.entity.PlayerEntity;
 import com.soccer.service.model.response.PlayerServiceResponse;
 
-//@Mapper
-public interface PlayerServiceResponseMapper {
+import java.util.Optional;
 
-    static PlayerServiceResponse toResponse(PlayerEntity playerResponse) {
-        if (playerResponse == null) {
-            return null;
-        }
+public class PlayerServiceResponseMapper {
 
-        return PlayerServiceResponse.builder()
-                .id(playerResponse.getId())
-                .name(playerResponse.getName())
-                .age(playerResponse.getAge())
-                .currentTeam(playerResponse.getCurrentTeam())
-                .historicalReputation(playerResponse.getHistoricalReputation())
-                .financialAppetite(playerResponse.getFinancialAppetite())
-                .price(playerResponse.getPrice())
-                .build();
-    }
-/*
-    static PlayerServiceResponse toPlayerResponse(Player playerResponse) {
-        return Mappers.getMapper(PlayerServiceResponseMapper.class)
-                .mapper(playerResponse);
+    public static PlayerServiceResponse toResponse(PlayerEntity playerResponse) {
+
+        return Optional.ofNullable(playerResponse)
+                .map(playerEntity -> PlayerServiceResponse.builder()
+                    .id(playerResponse.getId())
+                    .name(playerResponse.getName())
+                    .age(playerResponse.getAge())
+                    .currentTeam(playerResponse.getCurrentTeam())
+                    .historicalReputation(playerResponse.getHistoricalReputation())
+                    .financialAppetite(playerResponse.getFinancialAppetite())
+                    .price(playerResponse.getPrice())
+                    .build())
+                .orElse(null);
     }
 
-    PlayerServiceResponse mapper(Player playerResponse);
-    */
 }

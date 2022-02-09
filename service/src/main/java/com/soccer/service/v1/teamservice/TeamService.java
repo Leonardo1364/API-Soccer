@@ -1,9 +1,9 @@
-package com.soccer.service.v1.teamService;
+package com.soccer.service.v1.teamservice;
 
 import com.soccer.exceptions.notfound.NotFoundException;
 import com.soccer.model.entity.TeamEntity;
 import com.soccer.repository.TeamRepository;
-import com.soccer.restTemplate.ConsumerApi;
+import com.soccer.resttemplate.ConsumerApi;
 import com.soccer.service.mapper.response.TeamServiceResponseMapper;
 import com.soccer.service.model.request.TeamPatchServiceRequest;
 import com.soccer.service.model.request.TeamServiceRequest;
@@ -16,38 +16,46 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.soccer.service.mapper.request.TeamPatchServiceRequestMapper.toPatchEntity;
 import static com.soccer.service.mapper.request.TeamServiceRequestMapper.toEntity;
 import static com.soccer.service.mapper.response.TeamPatchServiceResponseMapper.toPatchResponse;
 import static com.soccer.service.mapper.response.TeamServiceResponseMapper.toResponse;
 
-@AllArgsConstructor
-@NoArgsConstructor
+/*@AllArgsConstructor
+@NoArgsConstructor*/
 @Service
 public class TeamService {
 
     private static final String OBJECT_NOT_FOUND = "ID not found";
 
+    @Autowired
     private TeamRepository teamRepository;
+    @Autowired
     private ConsumerApi consumerApi;
 
+    public TeamService(TeamRepository teamRepository, ConsumerApi consumerApi) {
+        this.teamRepository = teamRepository;
+        this.consumerApi = consumerApi;
+    }
+
+    public TeamService() {}
+
     public TeamServiceResponse save(TeamServiceRequest teamRequest) {
-        var responseApi = consumerApi.find(teamRequest.getLeagueId());
-        var teamEntity = toEntity(teamRequest, responseApi);
-        TeamEntity teamResponse = teamRepository.save(teamEntity);
+        TeamEntity teamResponse = teamRepository.save(toEntity(teamRequest,
+                consumerApi.find(teamRequest.getLeagueId())));
+
         return toResponse(teamResponse);
     }
 
     public TeamServiceResponse update(TeamServiceRequest team) {
-        var responseApi = consumerApi.find(team.getLeagueId());
-        TeamEntity teamSave = teamRepository.save(toEntity(team, responseApi));
+        TeamEntity teamSave = teamRepository.save(toEntity(team,
+                consumerApi.find(team.getLeagueId())));
+
         return toResponse(teamSave);
     }
 
-    public TeamPatchServiceResponse patch(TeamPatchServiceRequest team, String id) {
-        TeamEntity teamById = teamRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(OBJECT_NOT_FOUND));
-        teamById.setName(team.getName());
-        TeamEntity teamSave = teamRepository.save(teamById);
+    public TeamPatchServiceResponse patch(TeamPatchServiceRequest team) {
+        TeamEntity teamSave = teamRepository.save(toPatchEntity(team));
         return toPatchResponse(teamSave);
     }
 

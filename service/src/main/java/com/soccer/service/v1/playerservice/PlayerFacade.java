@@ -1,4 +1,4 @@
-package com.soccer.service.v1.playerService;
+package com.soccer.service.v1.playerservice;
 
 import com.soccer.service.model.request.PlayerServiceRequest;
 import com.soccer.service.model.response.PlayerServiceResponse;

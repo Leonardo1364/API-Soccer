@@ -1,4 +1,4 @@
-package com.soccer.restTemplate;
+package com.soccer.resttemplate;
 
 import com.soccer.model.response.LeagueIntegration;
 import lombok.AllArgsConstructor;
@@ -15,6 +15,9 @@ public class ConsumerApi {
 
     public LeagueIntegration find(Long leagueId) {
         UriComponents baseUri = UriComponentsBuilder.newInstance()
+                .scheme("http")
+                .host("localhost")
+                .port("8081")
                 .path("/v1/league/".concat(leagueId.toString()))
                 .build();
         return restTemplate.getForObject(baseUri.toUri(), LeagueIntegration.class);

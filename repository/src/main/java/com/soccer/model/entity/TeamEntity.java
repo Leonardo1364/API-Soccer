@@ -28,6 +28,6 @@ public class TeamEntity {
 
     private LocalDate date;
 
-    @DBRef(lazy = true)
+//    @DBRef(lazy = true)
     private LeagueEntity league;
 }

@@ -1,6 +1,6 @@
 package com.soccer.exceptions.handler;
 
-import com.soccer.exceptions.badRequestException.BadRequestException;
+import com.soccer.exceptions.badrequestexception.BadRequestException;
 import com.soccer.exceptions.details.ExceptionDetailsBadRequest;
 import com.soccer.exceptions.details.ExceptionDetailsNotFound;
 import com.soccer.exceptions.details.ExceptionMethodNotValidDetails;

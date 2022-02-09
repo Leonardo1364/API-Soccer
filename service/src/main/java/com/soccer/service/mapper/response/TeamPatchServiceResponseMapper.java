@@ -3,16 +3,17 @@ package com.soccer.service.mapper.response;
 import com.soccer.model.entity.TeamEntity;
 import com.soccer.service.model.response.TeamPatchServiceResponse;
 
-public interface TeamPatchServiceResponseMapper {
+import java.util.Optional;
 
-    static TeamPatchServiceResponse toPatchResponse(TeamEntity teamResponse) {
-        if (teamResponse == null) {
-            return null;
-        }
+public class TeamPatchServiceResponseMapper {
 
-        return TeamPatchServiceResponse.builder()
-                .id(teamResponse.getId())
-                .name(teamResponse.getName())
-                .build();
+    public static TeamPatchServiceResponse toPatchResponse(TeamEntity teamResponse) {
+
+        return Optional.ofNullable(teamResponse)
+                .map(teamEntity -> TeamPatchServiceResponse.builder()
+                    .id(teamResponse.getId())
+                    .name(teamResponse.getName())
+                    .build())
+                .orElse(null);
     }
 }

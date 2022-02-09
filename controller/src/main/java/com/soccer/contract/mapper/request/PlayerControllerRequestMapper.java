@@ -3,48 +3,38 @@ package com.soccer.contract.mapper.request;
 import com.soccer.contract.model.request.PlayerControllerRequest;
 import com.soccer.service.model.request.PlayerServiceRequest;
 
-//@Mapper()
-public interface PlayerControllerRequestMapper {
+import java.util.Optional;
 
-    static PlayerServiceRequest toServiceWithId(PlayerControllerRequest playerRequest, String id) {
-        if (playerRequest == null && id == null) {
-            return null;
-        }
+public class PlayerControllerRequestMapper {
 
-        return PlayerServiceRequest.builder()
-                .id(playerRequest.getId())
-                .name(playerRequest.getName())
-                .age(playerRequest.getAge())
-                .currentTeam(playerRequest.getCurrentTeam())
-                .historicalReputation(playerRequest.getHistoricalReputation())
-                .financialAppetite(playerRequest.getFinancialAppetite())
-                .price(playerRequest.getPrice())
-                .build();
+    public static PlayerServiceRequest toServiceWithId(PlayerControllerRequest playerRequest, String id) {
+
+        return Optional.ofNullable(playerRequest)
+                .map(playerControllerRequest -> PlayerServiceRequest.builder()
+                    .id(playerRequest.getId())
+                    .name(playerRequest.getName())
+                    .age(playerRequest.getAge())
+                    .currentTeam(playerRequest.getCurrentTeam())
+                    .historicalReputation(playerRequest.getHistoricalReputation())
+                    .financialAppetite(playerRequest.getFinancialAppetite())
+                    .price(playerRequest.getPrice())
+                    .build())
+                .orElse(null);
     }
 
-    static PlayerServiceRequest toServiceWithoutId(PlayerControllerRequest playerRequest) {
-        if (playerRequest == null) {
-            return null;
-        }
+    public static PlayerServiceRequest toServiceWithoutId(PlayerControllerRequest playerRequest) {
 
-        return PlayerServiceRequest.builder()
-                .id(playerRequest.getId())
-                .name(playerRequest.getName())
-                .age(playerRequest.getAge())
-                .currentTeam(playerRequest.getCurrentTeam())
-                .historicalReputation(playerRequest.getHistoricalReputation())
-                .financialAppetite(playerRequest.getFinancialAppetite())
-                .price(playerRequest.getPrice())
-                .build();
+        return Optional.ofNullable(playerRequest)
+                .map(playerControllerRequest -> PlayerServiceRequest.builder()
+                    .id(playerRequest.getId())
+                    .name(playerRequest.getName())
+                    .age(playerRequest.getAge())
+                    .currentTeam(playerRequest.getCurrentTeam())
+                    .historicalReputation(playerRequest.getHistoricalReputation())
+                    .financialAppetite(playerRequest.getFinancialAppetite())
+                    .price(playerRequest.getPrice())
+                    .build())
+                .orElse(null);
     }
-/*
-
-    static PlayerServiceRequest toPlayerService(PlayerControllerRequest playerRequest) {
-       return Mappers.getMapper(PlayerControllerRequestMapper.class)
-                .mapper(playerRequest);
-    }
-
-    PlayerServiceRequest mapper(PlayerControllerRequest playerRequest);
-*/
 
 }

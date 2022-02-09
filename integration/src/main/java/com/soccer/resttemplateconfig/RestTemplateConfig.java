@@ -1,4 +1,4 @@
-package com.soccer.restTemplateConfig;
+package com.soccer.resttemplateconfig;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +10,7 @@ import org.springframework.web.util.DefaultUriBuilderFactory;
 @Configuration
 public class RestTemplateConfig {
 
-    @Bean
+    /*@Bean
     public static RestTemplate restTemplate() {
 
         String baseUri = "http://localhost:8081";
@@ -18,6 +18,10 @@ public class RestTemplateConfig {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setUriTemplateHandler(uriBuilderFactory);
         return restTemplate;
-    }
+    }*/
 
+    @Bean
+    public static RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 }

@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.5.5'
+	id 'org.springframework.boot' version '2.6.1'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'application'
 	id 'java'
@@ -9,6 +9,9 @@ mainClassName = "com.soccer.SoccerApplication"
 
 dependencies {
 	implementation project(":controller")
+	implementation project(":service")
+	implementation project(":repository")
+	implementation project(":integration")
 }
 
 allprojects {
@@ -24,16 +27,14 @@ allprojects {
 	}
 
 	dependencies {
-		implementation 'org.springframework.boot:spring-boot-starter-web:2.5.6'
-		implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.6'
+		implementation 'org.springframework.boot:spring-boot-starter-web:2.6.3'
+		implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.3'
 //		implementation 'org.springframework.boot:spring-boot-starter-security:2.5.5'
-//		implementation 'org.mapstruct:mapstruct:1.4.2.Final'
-		implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.5.5'
+		implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.6.3'
 		compileOnly 'org.projectlombok:lombok:1.18.22'
-//		annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 		annotationProcessor 'org.projectlombok:lombok:1.18.22'
-		testImplementation "de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.3.1-SNAPSHOT"
-		testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.6'
+		testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.3.0'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.3'
 	}
 
 	test {

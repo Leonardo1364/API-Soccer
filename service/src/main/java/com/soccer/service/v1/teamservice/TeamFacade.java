@@ -1,4 +1,4 @@
-package com.soccer.service.v1.teamService;
+package com.soccer.service.v1.teamservice;
 
 import com.soccer.service.model.request.TeamPatchServiceRequest;
 import com.soccer.service.model.request.TeamServiceRequest;
@@ -25,9 +25,8 @@ public class TeamFacade {
         return teamService.update(team);
     }
 
-    public TeamPatchServiceResponse patch(TeamPatchServiceRequest team, String id) {
-        TeamPatchServiceResponse teamUpdate = teamService.findPatch(id);
-        return teamService.patch(team, teamUpdate.getName());
+    public TeamPatchServiceResponse patch(TeamPatchServiceRequest team) {
+        return teamService.patch(team);
     }
 
     public void delete(String id) {

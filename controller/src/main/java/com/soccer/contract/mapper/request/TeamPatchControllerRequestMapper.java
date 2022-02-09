@@ -3,15 +3,17 @@ package com.soccer.contract.mapper.request;
 import com.soccer.contract.model.request.TeamPatchControllerRequest;
 import com.soccer.service.model.request.TeamPatchServiceRequest;
 
-public interface TeamPatchControllerRequestMapper {
+import java.util.Optional;
 
-    static TeamPatchServiceRequest toPatchService(TeamPatchControllerRequest teamPatch) {
-        if (teamPatch == null)
-            return null;
+public class TeamPatchControllerRequestMapper {
 
-        return TeamPatchServiceRequest.builder()
-                .id(teamPatch.getId())
-                .name(teamPatch.getName())
-                .build();
+    public static TeamPatchServiceRequest toPatchServiceWithId(TeamPatchControllerRequest teamPatch, String id) {
+
+        return Optional.ofNullable(teamPatch)
+                .map(teamPatchControllerRequest -> TeamPatchServiceRequest.builder()
+                    .id(id)
+                    .name(teamPatch.getName())
+                    .build())
+                .orElse(null);
     }
 }

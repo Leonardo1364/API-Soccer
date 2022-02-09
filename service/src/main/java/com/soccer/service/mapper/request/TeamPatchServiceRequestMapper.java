@@ -3,16 +3,17 @@ package com.soccer.service.mapper.request;
 import com.soccer.model.entity.TeamEntity;
 import com.soccer.service.model.request.TeamPatchServiceRequest;
 
-public interface TeamPatchServiceRequestMapper {
+import java.util.Optional;
 
-    static TeamEntity toPatchEntity(TeamPatchServiceRequest teamRequest) {
-        if (teamRequest == null) {
-            return null;
-        }
+public class TeamPatchServiceRequestMapper {
 
-        return TeamEntity.builder()
-                .id(teamRequest.getId())
-                .name(teamRequest.getName())
-                .build();
+    public static TeamEntity toPatchEntity(TeamPatchServiceRequest teamRequest) {
+
+        return Optional.ofNullable(teamRequest)
+                .map(teamPatchServiceRequest -> TeamEntity.builder()
+                    .id(teamRequest.getId())
+                    .name(teamRequest.getName())
+                    .build())
+                .orElse(null);
     }
 }

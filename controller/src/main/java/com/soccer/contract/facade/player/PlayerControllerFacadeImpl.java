@@ -4,7 +4,7 @@ import com.soccer.contract.mapper.response.PlayerControllerResponseMapper;
 import com.soccer.contract.model.request.PlayerControllerRequest;
 import com.soccer.contract.model.response.PlayerControllerResponse;
 import com.soccer.service.model.response.PlayerServiceResponse;
-import com.soccer.service.v1.playerService.PlayerFacade;
+import com.soccer.service.v1.playerservice.PlayerFacade;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
