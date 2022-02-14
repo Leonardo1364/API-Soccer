@@ -22,6 +22,7 @@ public class TeamControllerRequest {
     //@Pattern(regexp = "&#32")
     @NotBlank
     @Size(min = 3, max = 255, message = "Min 1 and Max 255 characters.")
+    @NotNull
     private String name;
 
     @NotBlank

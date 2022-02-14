@@ -24,21 +24,21 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(NOT_FOUND)
-    public ExceptionDetailsNotFound handlerNotFoundException(NotFoundException e){
+    public ExceptionDetailsNotFound handlerNotFoundException(NotFoundException notFoundException){
         return ExceptionDetailsNotFound.builder()
                 .status(NOT_FOUND.value())
                 .title("Not found")
                 .timestamp(Instant.now())
-                .details(e.getMessage())
+                .details(notFoundException.getMessage())
                 .developerMessage("Enter a valid ID. Be sure this value exists.")
                 .build();
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(BAD_REQUEST)
-    public ExceptionMethodNotValidDetails handlerMethodNotValid(MethodArgumentNotValidException e){
+    public ExceptionMethodNotValidDetails handlerMethodNotValid(MethodArgumentNotValidException argumentNotValidException){
         Map<String, String> error = new HashMap<>();
-        List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
+        List<FieldError> fieldErrors = argumentNotValidException.getBindingResult().getFieldErrors();
         fieldErrors.forEach(p -> error.put(p.getField(), p.getDefaultMessage()));
 
         return ExceptionMethodNotValidDetails.builder()
@@ -52,12 +52,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(BAD_REQUEST)
-    public ExceptionDetailsBadRequest handlerBadRequest(BadRequestException e){
+    public ExceptionDetailsBadRequest handlerBadRequest(BadRequestException badRequestException){
         return ExceptionDetailsBadRequest.builder()
                 .status(BAD_REQUEST.value())
                 .title("Bad request")
                 .timestamp(Instant.now())
-                .details(e.getMessage())
+                .details(badRequestException.getMessage())
                 .developerMessage("the server did not understand your request!")
                 .build();
     }
