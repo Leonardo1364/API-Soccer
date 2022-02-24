@@ -10,8 +10,6 @@ import com.soccer.service.model.request.TeamServiceRequest;
 import com.soccer.service.model.response.TeamPatchServiceResponse;
 import com.soccer.service.model.response.TeamServiceResponse;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,39 +17,25 @@ import java.util.List;
 import static com.soccer.service.mapper.request.TeamPatchServiceRequestMapper.toPatchEntity;
 import static com.soccer.service.mapper.request.TeamServiceRequestMapper.toEntity;
 import static com.soccer.service.mapper.response.TeamPatchServiceResponseMapper.toPatchResponse;
-import static com.soccer.service.mapper.response.TeamServiceResponseMapper.toResponse;
+import static com.soccer.service.mapper.response.TeamServiceResponseMapper.toResponseService;
 
-/*@AllArgsConstructor
-@NoArgsConstructor*/
+@AllArgsConstructor
 @Service
 public class TeamService {
 
     private static final String OBJECT_NOT_FOUND = "ID not found";
 
-    @Autowired
-    private TeamRepository teamRepository;
-    @Autowired
-    private ConsumerApi consumerApi;
-
-    public TeamService(TeamRepository teamRepository, ConsumerApi consumerApi) {
-        this.teamRepository = teamRepository;
-        this.consumerApi = consumerApi;
-    }
-
-    public TeamService() {}
+    private final TeamRepository teamRepository;
+    private final ConsumerApi consumerApi;
 
     public TeamServiceResponse save(TeamServiceRequest teamRequest) {
-        TeamEntity teamResponse = teamRepository.save(toEntity(teamRequest,
-                consumerApi.find(teamRequest.getLeagueId())));
-
-        return toResponse(teamResponse);
+        return toResponseService(teamRepository.save(toEntity(teamRequest,
+                consumerApi.find(teamRequest.getLeagueId()))));
     }
 
     public TeamServiceResponse update(TeamServiceRequest team) {
-        TeamEntity teamSave = teamRepository.save(toEntity(team,
-                consumerApi.find(team.getLeagueId())));
-
-        return toResponse(teamSave);
+        return toResponseService(teamRepository.save(toEntity(team,
+                consumerApi.find(team.getLeagueId()))));
     }
 
     public TeamPatchServiceResponse patch(TeamPatchServiceRequest team) {
@@ -66,12 +50,12 @@ public class TeamService {
     public TeamServiceResponse findById(String id) {
         TeamEntity teamName = teamRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(OBJECT_NOT_FOUND));
-        return toResponse(teamName);
+        return toResponseService(teamName);
     }
 
     public List<TeamServiceResponse> findAll() {
         return teamRepository.findAll().stream()
-                .map(TeamServiceResponseMapper::toResponse)
+                .map(TeamServiceResponseMapper::toResponseService)
                 .toList();
     }
 

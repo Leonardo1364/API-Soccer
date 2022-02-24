@@ -1,12 +1,19 @@
 package com.soccer.service.mapper.request;
 
+import com.soccer.exceptions.badrequestexception.BadRequestException;
 import com.soccer.model.entity.LeagueEntity;
 import com.soccer.model.entity.TeamEntity;
 import com.soccer.model.response.LeagueIntegration;
 import com.soccer.service.model.request.TeamServiceRequest;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
 import java.util.Optional;
 
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TeamServiceRequestMapper {
 
     public static TeamEntity toEntity(TeamServiceRequest teamRequest, LeagueIntegration leagueIntegration) {
@@ -16,9 +23,10 @@ public class TeamServiceRequestMapper {
                         .name(teamRequest.getName())
                         .historicalReputation(teamRequest.getHistoricalReputation())
                         .balance(teamRequest.getBalance())
+                        .date(teamRequest.getDate())
                         .league(toLeagueEntity(leagueIntegration))
                         .build())
-                .orElse(null);
+                .orElseThrow(() -> new BadRequestException(BAD_REQUEST));
     }
 
     public static LeagueEntity toLeagueEntity(LeagueIntegration leagueIntegration) {
@@ -28,7 +36,7 @@ public class TeamServiceRequestMapper {
                         .name(leagueIntegration.getName())
                         .country(leagueIntegration.getCountry())
                         .build())
-                .orElse(null);
+                .orElseThrow(() -> new BadRequestException(BAD_REQUEST));
     }
 
 }
