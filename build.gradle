@@ -8,15 +8,20 @@ plugins {
 mainClassName = "com.soccer.SoccerApplication"
 
 dependencies {
-	implementation project(":controller")
-	implementation project(":service")
-	implementation project(":repository")
-	implementation project(":integration")
+	implementation project(':controller')
+	implementation project(':impl')
+	implementation project(':repository')
+	implementation project(':integration')
+	testImplementation project(':controller')
+	testImplementation project(':impl')
 }
 
 allprojects {
 	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'org.springframework.boot'
 	apply plugin: 'io.spring.dependency-management'
+
 
 	group = 'com.soccer'
 	version = '0.0.1-SNAPSHOT'

@@ -1,5 +1,0 @@
-dependencies {
-    implementation project(':repository')
-    implementation project(':integration')
-    testImplementation project(':service')
-}
