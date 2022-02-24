@@ -4,9 +4,12 @@ import com.soccer.contract.model.response.LeagueControllerResponse;
 import com.soccer.contract.model.response.TeamControllerResponse;
 import com.soccer.service.model.response.LeagueServiceResponse;
 import com.soccer.service.model.response.TeamServiceResponse;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.Optional;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TeamControllerResponseMapper {
 
    public static TeamControllerResponse toResponseController(TeamServiceResponse teamServiceResponse) {

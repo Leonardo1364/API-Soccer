@@ -2,9 +2,12 @@ package com.soccer.contract.mapper.request;
 
 import com.soccer.contract.model.request.TeamControllerRequest;
 import com.soccer.service.model.request.TeamServiceRequest;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.Optional;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TeamControllerRequestMapper {
 
     public static TeamServiceRequest toServiceWithId(TeamControllerRequest teamRequest, String id) {
