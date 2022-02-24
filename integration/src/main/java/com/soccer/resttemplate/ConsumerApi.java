@@ -4,22 +4,28 @@ import com.soccer.model.response.LeagueIntegration;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 @AllArgsConstructor
 @Component
 public class ConsumerApi {
 
     private RestTemplate restTemplate;
+    private RestTemplate restTemplate1;
 
     public LeagueIntegration find(Long leagueId) {
-        UriComponents baseUri = UriComponentsBuilder.newInstance()
-                .scheme("http")
-                .host("localhost")
-                .port("8081")
-                .path("/v1/league/".concat(leagueId.toString()))
-                .build();
-        return restTemplate.getForObject(baseUri.toUri(), LeagueIntegration.class);
+        return restTemplate1.getForObject("/v1/league/".concat(leagueId.toString()), LeagueIntegration.class);
     }
+
+    public List<LeagueIntegration> findAll() {
+        return Arrays.stream(
+                Objects
+                        .requireNonNull(restTemplate
+                            .getForObject("/v1/league/", LeagueIntegration[].class)))
+                            .toList();
+    }
+
 }
